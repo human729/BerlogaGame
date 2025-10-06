@@ -23,7 +23,6 @@ public class RoomPanelUI : MonoBehaviour
     private List<string> _allMessages = new List<string>();
     private int _currentIndex = 0;
     private RoomsData _rooms;
-    private CharacterController characterController;
     [System.Serializable]
     public class TaskData
     {
@@ -48,7 +47,7 @@ public class RoomPanelUI : MonoBehaviour
     }
 
     private void Awake()
-    {   characterController.enabled = false;
+    {   
         if (nextButton != null)
             nextButton.onClick.AddListener(OnNextClicked);
 
@@ -82,7 +81,6 @@ public class RoomPanelUI : MonoBehaviour
         if(nextButton.GetComponentInChildren<TextMeshProUGUI>().text == "Завершить")
         {
             gameObject.SetActive(false);
-            characterController.enabled = true;
         }
 
         if (!nextButton) return;
