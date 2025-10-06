@@ -23,7 +23,7 @@ public class RoomPanelUI : MonoBehaviour
     private List<string> _allMessages = new List<string>();
     private int _currentIndex = 0;
     private RoomsData _rooms;
-    private CharacterController characterController;
+    [SerializeField] private CharacterController characterController;
     [System.Serializable]
     public class TaskData
     {

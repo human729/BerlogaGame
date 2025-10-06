@@ -1448,7 +1448,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 430687758}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &430687758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2800,7 +2812,7 @@ GameObject:
   - component: {fileID: 912194207}
   - component: {fileID: 912194211}
   - component: {fileID: 912194208}
-  - component: {fileID: 912194210}
+  - component: {fileID: 912194212}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2951,21 +2963,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!114 &912194210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 912194202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3339770235069da47a322b481fbedd0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TempControlGameObject: {fileID: 824692891}
-  ColorControlGameObject: {fileID: 662221239}
-  computerCanvas: {fileID: 1613197075}
 --- !u!114 &912194211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2975,13 +2972,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 912194202}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9ce236c27e5d4044a7ad9ffbc03d746, type: 3}
+  m_Script: {fileID: 11500000, guid: ea261a24f971e4640910ff79009581fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
-  JumpPower: 5
+  JumpPower: 6
   rb: {fileID: 912194207}
   rayCastOffset: 0.7
+  source: {fileID: 0}
+--- !u!114 &912194212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912194202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81300c0f0bd9ec844b2e03e0e433c75e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TempControlGameObject: {fileID: 824692891}
+  ColorControlGameObject: {fileID: 662221239}
+  computerCanvas: {fileID: 1613197075}
 --- !u!1 &919097922
 GameObject:
   m_ObjectHideFlags: 0
@@ -3505,6 +3518,7 @@ MonoBehaviour:
   typewriter: {fileID: 1130932173}
   roomsJson: {fileID: 4900000, guid: 1030916c12d9a1b49a694042f32c2daf, type: 3}
   startRoomId: 3
+  characterController: {fileID: 912194211}
 --- !u!114 &1130932175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4382,6 +4396,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512254943}
   m_CullTransparentMesh: 1
+--- !u!1 &1526867087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1526867088}
+  m_Layer: 0
+  m_Name: SpawnZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1526867088
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526867087}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.03, y: -2.92, z: -0.16322146}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1541128262
 GameObject:
   m_ObjectHideFlags: 0
@@ -4783,7 +4828,6 @@ GameObject:
   - component: {fileID: 1613197077}
   - component: {fileID: 1613197076}
   - component: {fileID: 1613197080}
-  - component: {fileID: 1613197081}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4896,19 +4940,6 @@ MonoBehaviour:
   Lamp: {fileID: 853077840}
   TempSettings: {fileID: 824692891}
   ColorSettings: {fileID: 662221239}
---- !u!114 &1613197081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613197075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c79f5329c0708ea41b5f371c31b7461e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InterfaceUI: {fileID: 1500361611}
 --- !u!1 &1701610991
 GameObject:
   m_ObjectHideFlags: 0
@@ -6124,3 +6155,4 @@ SceneRoots:
   - {fileID: 934585488}
   - {fileID: 1308009032}
   - {fileID: 1600201595}
+  - {fileID: 1526867088}
