@@ -25,6 +25,10 @@ public class PlayerTrigger : MonoBehaviour
         {
             characterController.enabled = false;
         }
+        else
+        {
+            characterController.enabled = false;
+        }
 
         if (Input.GetKeyDown(KeyCode.E))
         {

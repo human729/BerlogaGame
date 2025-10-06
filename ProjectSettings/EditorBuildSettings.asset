@@ -17,6 +17,23 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ResearchLaboratory3.unity
     guid: 1e9a3cc0ebde03a44aac272e2bd9809d
+  - enabled: 1
+    path: Assets/Scenes/1stLvl.unity
+    guid: 22cab0c85df3c924dbf92a9d280ae236
+  - enabled: 1
+    path: Assets/Scenes/2ndLvl.unity
+    guid: 01ea4b65e7da5784688f811cd1fa3384
+  - enabled: 1
+    path: Assets/Scenes/3rdLvl.unity
+    guid: b79fed9aadd5e4348b5ac9bb7fc69d12
+    path: Assets/Scenes/FirstLevel.unity
+    guid: 2252448e8db6acf41919b71e4a2f82e3
+  - enabled: 1
+    path: Assets/Scenes/SecondLevel.unity
+    guid: 3af92651a660f124e86df8d8e2d6a695
+  - enabled: 1
+    path: Assets/Scenes/ThirdLevel.unity
+    guid: f48fefd364595dc4e98cb46084a3930e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

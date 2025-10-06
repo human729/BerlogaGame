@@ -5,20 +5,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-/// <summary>
-/// Панель комнаты — читает JSON, показывает тексты по кнопке.
-/// </summary>
 public class RoomPanelUI : MonoBehaviour
 {
-    [Header("UI-ссылки")]
+    [Header("UI-пїЅпїЅпїЅпїЅпїЅпїЅ")]
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI bodyText;
     public Button nextButton;
     public TypewriterTMP typewriter;
 
-    [Header("Настройки")]
-    public TextAsset roomsJson; // файл JSON (можно закинуть в инспекторе)
-    public int startRoomId = 1; // какая комната по умолчанию
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
+    public TextAsset roomsJson; // пїЅпїЅпїЅпїЅ JSON (пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
+    public int startRoomId = 1; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
     private List<string> _allMessages = new List<string>();
     private int _currentIndex = 0;
@@ -63,7 +60,7 @@ public class RoomPanelUI : MonoBehaviour
     {
         if (roomsJson == null)
         {
-            Debug.LogError("Не задан файл JSON!");
+            Debug.LogError("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ JSON!");
             return;
         }
 
@@ -78,7 +75,7 @@ public class RoomPanelUI : MonoBehaviour
 
     private void SetButtonLabel(string txt)
     {
-        if(nextButton.GetComponentInChildren<TextMeshProUGUI>().text == "Завершить")
+        if(nextButton.GetComponentInChildren<TextMeshProUGUI>().text == "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
         {
             gameObject.SetActive(false);
         }
@@ -88,24 +85,24 @@ public class RoomPanelUI : MonoBehaviour
         if (label != null) label.text = txt;
     }
 
-    /// <summary>Запускает выбранную комнату.</summary>
+    /// <summary>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.</summary>
     public void BeginRoom(int roomId)
     {
         if (_rooms == null || _rooms.rooms == null)
         {
-            Debug.LogError("Нет данных о комнатах!");
+            Debug.LogError("пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
             return;
         }
 
         var room = _rooms.rooms.Find(r => r.room_id == roomId);
         if (room == null)
         {
-            Debug.LogError($"Комната {roomId} не найдена!");
+            Debug.LogError($"пїЅпїЅпїЅпїЅпїЅпїЅпїЅ {roomId} пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
             return;
         }
 
 
-        // Собираем все сообщения по порядку
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         _allMessages.Clear();
 
         List<string> messages = room.start_message.Split(".").ToList();
@@ -124,11 +121,11 @@ public class RoomPanelUI : MonoBehaviour
         }
 
         if (_allMessages.Count == 0)
-            _allMessages.Add("[В этой комнате нет сообщений]");
+            _allMessages.Add("[пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ]");
 
         _currentIndex = 0;
         ShowText(_allMessages[_currentIndex]);
-        SetButtonLabel("Далее");
+        SetButtonLabel("пїЅпїЅпїЅпїЅпїЅ");
     }
 
     private void OnNextClicked()
@@ -146,14 +143,14 @@ public class RoomPanelUI : MonoBehaviour
             ShowText(_allMessages[_currentIndex]);
 
             if (_currentIndex == _allMessages.Count - 3)
-                SetButtonLabel("Завершить");
+                SetButtonLabel("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
             else
-                SetButtonLabel("Далее");
+                SetButtonLabel("пїЅпїЅпїЅпїЅпїЅ");
         }
         else
         {
-            ShowText("[Комната завершена]");
-            _currentIndex = -1; // сброс
+            ShowText("[пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ]");
+            _currentIndex = -1; // пїЅпїЅпїЅпїЅпїЅ
         }
     }
 }
