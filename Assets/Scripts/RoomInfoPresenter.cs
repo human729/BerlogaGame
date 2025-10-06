@@ -2,6 +2,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using Newtonsoft.Json;
+using BearLab.Story;
 
 public class RoomInfoPresenter : MonoBehaviour
 {

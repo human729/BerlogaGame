@@ -13,6 +13,7 @@ using UnityEngine.UI;
 
 public class CanvasScript : MonoBehaviour
 {
+    public GameObject StoryLine;
     public GameObject eventManager;
     public string answer;
     [SerializeField] private GameObject HelpMenu;
@@ -108,6 +109,7 @@ public class CanvasScript : MonoBehaviour
                 }
                 if (query.ToLower().Remove(query.Length - 1) == answer.ToLower())
                 {
+                    StoryLine.SetActive(true);
                     pastTasks.Add(TaskField.text);
                     checkConditions.CheckConditions();
                     TablePCs.Peek().gameObject.GetComponent<BoxCollider2D>().enabled = false;

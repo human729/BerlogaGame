@@ -8,10 +8,16 @@ public class TypewriterTMP : MonoBehaviour
     public TextMeshProUGUI textComponent;
     public float charsPerSecond = 40f;
 
-    Coroutine typing;
+    private Coroutine typing;
+
+    void Reset()
+    {
+        textComponent = GetComponent<TextMeshProUGUI>();
+    }
 
     public void Play(string fullText)
     {
+        if (!textComponent) textComponent = GetComponent<TextMeshProUGUI>();
         if (!textComponent) return;
 
         textComponent.enableAutoSizing = false;
@@ -28,17 +34,31 @@ public class TypewriterTMP : MonoBehaviour
 
     public void Complete()
     {
-        if (typing != null) { StopCoroutine(typing); typing = null; }
+        if (typing != null)
+        {
+            StopCoroutine(typing);
+            typing = null;
+        }
         if (!textComponent) return;
         textComponent.ForceMeshUpdate();
         textComponent.maxVisibleCharacters = textComponent.textInfo.characterCount;
     }
 
-    IEnumerator TypeRoutine()
+    private IEnumerator TypeRoutine()
     {
+        if (!textComponent) yield break;
+
         int total = textComponent.textInfo.characterCount;
-        if (charsPerSecond <= 0f) { textComponent.maxVisibleCharacters = total; typing = null; yield break; }
+
+        if (charsPerSecond <= 0f)
+        {
+            textComponent.maxVisibleCharacters = total;
+            typing = null;
+            yield break;
+        }
+
         float delay = 1f / Mathf.Max(1f, charsPerSecond);
+
         for (int i = 0; i <= total; i++)
         {
             textComponent.maxVisibleCharacters = i;

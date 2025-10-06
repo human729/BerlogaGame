@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using Newtonsoft.Json;
-
+using BearLab.Story;
 public class JSONLoader : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
@@ -43,6 +43,6 @@ public class JSONLoader : MonoBehaviour
         // Поставь, что хочешь выводить — intro или arrive
         // textComponent.text = data.intro;
         textComponent.text = data.intro;
-
+    
     }
 }

@@ -3178,7 +3178,7 @@ MonoBehaviour:
   minigamePanel: {fileID: 776937303}
   computerCanvas: {fileID: 1389211247}
   characterController: {fileID: 1282142034}
-  NextScene: ResearchLaboratory2
+  NextScene: ResearchLaboratory3
   panelOpenScene: {fileID: 1152784107}
 --- !u!82 &1282142040
 AudioSource:

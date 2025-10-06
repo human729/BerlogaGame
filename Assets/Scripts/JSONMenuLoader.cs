@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Newtonsoft.Json;
-
+using BearLab.Story;
 public class JSONMenuLoader : MonoBehaviour
 {
     [Header("UI")]

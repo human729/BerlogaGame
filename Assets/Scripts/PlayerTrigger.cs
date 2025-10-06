@@ -12,7 +12,6 @@ public class PlayerTrigger : MonoBehaviour
     private bool isOnTriggerWorkplace;
     private MinigameSQL minigame;
     public GameObject spawnZone;
-    [SerializeField] private GameObject minigamePanel;
     [SerializeField] private GameObject computerCanvas;
     [SerializeField] private CharacterController characterController;
     [SerializeField] private string NextScene;

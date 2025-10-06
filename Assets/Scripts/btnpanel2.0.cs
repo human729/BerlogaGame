@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-
+using BearLab.Story;
 public class BtnPanel2 : MonoBehaviour
 {
     [Header("UI")]
