@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,11 +17,7 @@ public class PlayerTrigger : MonoBehaviour
     public GameObject StoryObject;
     void Update()
     {
-<<<<<<< Updated upstream
-        if (!computerCanvas.activeInHierarchy)
-=======
         if (!computerCanvas.activeInHierarchy && !StoryObject.activeInHierarchy)
->>>>>>> Stashed changes
         {
             characterController.enabled = true;
         } else
@@ -93,7 +88,7 @@ public class PlayerTrigger : MonoBehaviour
 
     IEnumerator OpenScene()
     {
-        yield return new WaitForSeconds(.7f);
+        yield return new WaitForSeconds(.3f);
         SceneManager.LoadScene(NextScene);
     }
 }

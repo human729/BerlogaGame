@@ -5390,7 +5390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interf: {fileID: 258375517}
   move: []
-  speed: 0
+  speed: 2
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -8666,7 +8666,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -15
   m_Sprite: {fileID: -611731743, guid: b28f8f829d9af4e49a3141d5a3f9b4cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11286,7 +11286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2010464745
 RectTransform:
   m_ObjectHideFlags: 0

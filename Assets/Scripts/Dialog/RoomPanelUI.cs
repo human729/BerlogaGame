@@ -2,12 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
-/// <summary>
-/// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ JSON, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
-/// </summary>
 public class RoomPanelUI : MonoBehaviour
 {
     [Header("UI-пїЅпїЅпїЅпїЅпїЅпїЅ")]
@@ -23,11 +19,7 @@ public class RoomPanelUI : MonoBehaviour
     private List<string> _allMessages = new List<string>();
     private int _currentIndex = 0;
     private RoomsData _rooms;
-<<<<<<< Updated upstream:Assets/Scripts/Dialog/RoomPanelUI.cs
-    [SerializeField] private CharacterController characterController;
-=======
->>>>>>> Stashed changes:Assets/Scripts/RoomPanelUI.cs
-    [System.Serializable]
+
     public class TaskData
     {
         public int task_number;
@@ -82,40 +74,28 @@ public class RoomPanelUI : MonoBehaviour
 
     private void SetButtonLabel(string txt)
     {
-<<<<<<< Updated upstream:Assets/Scripts/Dialog/RoomPanelUI.cs
-=======
         if(nextButton.GetComponentInChildren<TextMeshProUGUI>().text == "Завершить")
         {
             gameObject.SetActive(false);
         }
->>>>>>> Stashed changes:Assets/Scripts/RoomPanelUI.cs
-
         if (!nextButton) return;
         var label = nextButton.GetComponentInChildren<TextMeshProUGUI>();
         if (label != null) label.text = txt;
     }
 
-    /// <summary>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.</summary>
     public void BeginRoom(int roomId)
     {
         if (_rooms == null || _rooms.rooms == null)
         {
-            Debug.LogError("пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
             return;
         }
 
         var room = _rooms.rooms.Find(r => r.room_id == roomId);
         if (room == null)
         {
-            Debug.LogError($"пїЅпїЅпїЅпїЅпїЅпїЅпїЅ {roomId} пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
             return;
         }
 
-<<<<<<< Updated upstream:Assets/Scripts/Dialog/RoomPanelUI.cs
-
-        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-=======
->>>>>>> Stashed changes:Assets/Scripts/RoomPanelUI.cs
         _allMessages.Clear();
 
         List<string> messages = room.start_message.Split(".").ToList();
@@ -141,14 +121,9 @@ public class RoomPanelUI : MonoBehaviour
             SetButtonLabel("Завершить");
 
         _currentIndex = 0;
-<<<<<<< Updated upstream:Assets/Scripts/Dialog/RoomPanelUI.cs
-        ShowText(_allMessages[_currentIndex]+".");
-        SetButtonLabel("пїЅпїЅпїЅпїЅпїЅ");
-=======
         ShowText(_allMessages[_currentIndex] + ".");
         print(_allMessages[_currentIndex]);
         SetButtonLabel("Далее");
->>>>>>> Stashed changes:Assets/Scripts/RoomPanelUI.cs
     }
         
     private void OnNextClicked()
@@ -168,27 +143,16 @@ public class RoomPanelUI : MonoBehaviour
 
         if (_currentIndex < _allMessages.Count)
         {
-<<<<<<< Updated upstream:Assets/Scripts/Dialog/RoomPanelUI.cs
-            ShowText(_allMessages[_currentIndex]+".");
-
-            if (_currentIndex == _allMessages.Count - 1)
-                SetButtonLabel("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
-=======
             ShowText(_allMessages[_currentIndex] + ".");
 
             if (_currentIndex == _allMessages.Count - 1)
                 SetButtonLabel("Завершить");
->>>>>>> Stashed changes:Assets/Scripts/RoomPanelUI.cs
             else
                 SetButtonLabel("пїЅпїЅпїЅпїЅпїЅ");
         }
         else
         {
-<<<<<<< Updated upstream:Assets/Scripts/Dialog/RoomPanelUI.cs
-            _currentIndex = -1; // пїЅпїЅпїЅпїЅпїЅ
-=======
             _currentIndex = -1; // сброс
->>>>>>> Stashed changes:Assets/Scripts/RoomPanelUI.cs
         }
 
         if (nextButton.GetComponentInChildren<TextMeshProUGUI>().text != "Завершить")

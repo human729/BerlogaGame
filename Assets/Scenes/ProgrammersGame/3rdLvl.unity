@@ -4292,7 +4292,6 @@ MonoBehaviour:
   typewriter: {fileID: 1307256826}
   roomsJson: {fileID: 4900000, guid: 1030916c12d9a1b49a694042f32c2daf, type: 3}
   startRoomId: 9
-  characterController: {fileID: 1016502979}
 --- !u!114 &1307256828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4346,7 +4345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1319875958
 RectTransform:
   m_ObjectHideFlags: 0

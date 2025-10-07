@@ -2,13 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using Mono.Cecil;
 using Mono.Data.Sqlite;
-using NUnit.Framework;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CanvasScript : MonoBehaviour

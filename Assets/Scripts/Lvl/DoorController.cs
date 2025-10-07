@@ -10,7 +10,6 @@ public class DronPlace : MonoBehaviour
         if (collision.name == "Dron")
         {
             animator.SetBool("DronInTrigger", true);
-            source.Play();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
