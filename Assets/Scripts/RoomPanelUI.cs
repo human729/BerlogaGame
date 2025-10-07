@@ -23,7 +23,7 @@ public class RoomPanelUI : MonoBehaviour
     private List<string> _allMessages = new List<string>();
     private int _currentIndex = 0;
     private RoomsData _rooms;
-    private CharacterController characterController;
+    [SerializeField] private CharacterController characterController;
     [System.Serializable]
     public class TaskData
     {
@@ -79,11 +79,7 @@ public class RoomPanelUI : MonoBehaviour
 
     private void SetButtonLabel(string txt)
     {
-        if(nextButton.GetComponentInChildren<TextMeshProUGUI>().text == "Завершить")
-        {
-            gameObject.SetActive(false);
-            characterController.enabled = true;
-        }
+
 
         if (!nextButton) return;
         var label = nextButton.GetComponentInChildren<TextMeshProUGUI>();
@@ -129,12 +125,17 @@ public class RoomPanelUI : MonoBehaviour
             _allMessages.Add("[В этой комнате нет сообщений]");
 
         _currentIndex = 0;
-        ShowText(_allMessages[_currentIndex]);
+        ShowText(_allMessages[_currentIndex]+".");
         SetButtonLabel("Далее");
     }
 
     private void OnNextClicked()
     {
+        if (nextButton.GetComponentInChildren<TextMeshProUGUI>().text == "Завершить")
+        {
+            gameObject.SetActive(false);
+        }
+
         if (typewriter && typewriter.IsTyping)
         {
             typewriter.Complete();
@@ -145,16 +146,15 @@ public class RoomPanelUI : MonoBehaviour
 
         if (_currentIndex < _allMessages.Count)
         {
-            ShowText(_allMessages[_currentIndex]);
+            ShowText(_allMessages[_currentIndex]+".");
 
-            if (_currentIndex == _allMessages.Count - 3)
+            if (_currentIndex == _allMessages.Count - 1)
                 SetButtonLabel("Завершить");
             else
                 SetButtonLabel("Далее");
         }
         else
         {
-            ShowText("[Комната завершена]");
             _currentIndex = -1; // сброс
         }
     }
