@@ -6,7 +6,7 @@ using System.Net.Security;
 
 public class Education : MonoBehaviour
 {
-    private bool isEducationDone = false;
+    public static bool isEducationDone = false;
     private bool isActiveStatic = false;
     [SerializeField] GameObject staticObjects;
     [SerializeField] GameObject intterface;

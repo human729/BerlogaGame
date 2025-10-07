@@ -12,12 +12,11 @@ TagManager:
   - DeadZone
   - Elevator
   - Ground
-  - EndTriggerZone
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ground
   - Water
   - UI
   - 

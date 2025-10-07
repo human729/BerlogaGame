@@ -17,13 +17,12 @@ public class RoomPanelUI : MonoBehaviour
     public TypewriterTMP typewriter;
 
     [Header("Настройки")]
-    public TextAsset roomsJson; // файл JSON (можно закинуть в инспекторе)
-    public int startRoomId = 1; // какая комната по умолчанию
+    public TextAsset roomsJson;
+    public int startRoomId = 1;
 
     private List<string> _allMessages = new List<string>();
     private int _currentIndex = 0;
     private RoomsData _rooms;
-    private CharacterController characterController;
     [System.Serializable]
     public class TaskData
     {
@@ -48,7 +47,7 @@ public class RoomPanelUI : MonoBehaviour
     }
 
     private void Awake()
-    {   characterController.enabled = false;
+    {   
         if (nextButton != null)
             nextButton.onClick.AddListener(OnNextClicked);
 
@@ -79,11 +78,7 @@ public class RoomPanelUI : MonoBehaviour
 
     private void SetButtonLabel(string txt)
     {
-        if(nextButton.GetComponentInChildren<TextMeshProUGUI>().text == "Завершить")
-        {
-            gameObject.SetActive(false);
-            characterController.enabled = true;
-        }
+        
 
         if (!nextButton) return;
         var label = nextButton.GetComponentInChildren<TextMeshProUGUI>();
@@ -111,6 +106,7 @@ public class RoomPanelUI : MonoBehaviour
         _allMessages.Clear();
 
         List<string> messages = room.start_message.Split(".").ToList();
+
         foreach (string message in messages)
         {
             if (!string.IsNullOrEmpty(message)) _allMessages.Add(message);
@@ -129,12 +125,17 @@ public class RoomPanelUI : MonoBehaviour
             _allMessages.Add("[В этой комнате нет сообщений]");
 
         _currentIndex = 0;
-        ShowText(_allMessages[_currentIndex]);
+        ShowText(_allMessages[_currentIndex] + ".");
         SetButtonLabel("Далее");
     }
-
+        
     private void OnNextClicked()
     {
+        if (nextButton.GetComponentInChildren<TextMeshProUGUI>().text == "Завершить")
+        {
+            gameObject.SetActive(false);
+        }
+
         if (typewriter && typewriter.IsTyping)
         {
             typewriter.Complete();
@@ -145,9 +146,9 @@ public class RoomPanelUI : MonoBehaviour
 
         if (_currentIndex < _allMessages.Count)
         {
-            ShowText(_allMessages[_currentIndex]);
+            ShowText(_allMessages[_currentIndex] + ".");
 
-            if (_currentIndex == _allMessages.Count - 3)
+            if (_currentIndex == _allMessages.Count - 1)
                 SetButtonLabel("Завершить");
             else
                 SetButtonLabel("Далее");

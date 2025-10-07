@@ -9,7 +9,7 @@ public class Comands : MonoBehaviour
     [SerializeField] GameObject interf;
     public List<string> move = new List<string>();
     private Coroutine currentExecution;
-    private float speed = 1f;
+    [SerializeField] float speed;
     public LayerMask obstacleLayer;
 
     private bool isGameStart = false;
