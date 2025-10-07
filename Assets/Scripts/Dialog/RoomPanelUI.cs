@@ -6,19 +6,19 @@ using System.IO;
 using System.Linq;
 
 /// <summary>
-/// Панель комнаты — читает JSON, показывает тексты по кнопке.
+/// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ JSON, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 /// </summary>
 public class RoomPanelUI : MonoBehaviour
 {
-    [Header("UI-ссылки")]
+    [Header("UI-пїЅпїЅпїЅпїЅпїЅпїЅ")]
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI bodyText;
     public Button nextButton;
     public TypewriterTMP typewriter;
 
-    [Header("Настройки")]
-    public TextAsset roomsJson; // файл JSON (можно закинуть в инспекторе)
-    public int startRoomId = 1; // какая комната по умолчанию
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
+    public TextAsset roomsJson;
+    public int startRoomId = 1;
 
     private List<string> _allMessages = new List<string>();
     private int _currentIndex = 0;
@@ -48,7 +48,7 @@ public class RoomPanelUI : MonoBehaviour
     }
 
     private void Awake()
-    {   characterController.enabled = false;
+    {   
         if (nextButton != null)
             nextButton.onClick.AddListener(OnNextClicked);
 
@@ -64,7 +64,7 @@ public class RoomPanelUI : MonoBehaviour
     {
         if (roomsJson == null)
         {
-            Debug.LogError("Не задан файл JSON!");
+            Debug.LogError("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ JSON!");
             return;
         }
 
@@ -80,33 +80,33 @@ public class RoomPanelUI : MonoBehaviour
     private void SetButtonLabel(string txt)
     {
 
-
         if (!nextButton) return;
         var label = nextButton.GetComponentInChildren<TextMeshProUGUI>();
         if (label != null) label.text = txt;
     }
 
-    /// <summary>Запускает выбранную комнату.</summary>
+    /// <summary>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.</summary>
     public void BeginRoom(int roomId)
     {
         if (_rooms == null || _rooms.rooms == null)
         {
-            Debug.LogError("Нет данных о комнатах!");
+            Debug.LogError("пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
             return;
         }
 
         var room = _rooms.rooms.Find(r => r.room_id == roomId);
         if (room == null)
         {
-            Debug.LogError($"Комната {roomId} не найдена!");
+            Debug.LogError($"пїЅпїЅпїЅпїЅпїЅпїЅпїЅ {roomId} пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
             return;
         }
 
 
-        // Собираем все сообщения по порядку
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         _allMessages.Clear();
 
         List<string> messages = room.start_message.Split(".").ToList();
+
         foreach (string message in messages)
         {
             if (!string.IsNullOrEmpty(message)) _allMessages.Add(message);
@@ -122,16 +122,16 @@ public class RoomPanelUI : MonoBehaviour
         }
 
         if (_allMessages.Count == 0)
-            _allMessages.Add("[В этой комнате нет сообщений]");
+            _allMessages.Add("[пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ]");
 
         _currentIndex = 0;
         ShowText(_allMessages[_currentIndex]+".");
-        SetButtonLabel("Далее");
+        SetButtonLabel("пїЅпїЅпїЅпїЅпїЅ");
     }
-
+        
     private void OnNextClicked()
     {
-        if (nextButton.GetComponentInChildren<TextMeshProUGUI>().text == "Завершить")
+        if (nextButton.GetComponentInChildren<TextMeshProUGUI>().text == "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
         {
             gameObject.SetActive(false);
         }
@@ -149,13 +149,13 @@ public class RoomPanelUI : MonoBehaviour
             ShowText(_allMessages[_currentIndex]+".");
 
             if (_currentIndex == _allMessages.Count - 1)
-                SetButtonLabel("Завершить");
+                SetButtonLabel("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
             else
-                SetButtonLabel("Далее");
+                SetButtonLabel("пїЅпїЅпїЅпїЅпїЅ");
         }
         else
         {
-            _currentIndex = -1; // сброс
+            _currentIndex = -1; // пїЅпїЅпїЅпїЅпїЅ
         }
     }
 }

@@ -18,11 +18,11 @@ public class PlayerTrigger : MonoBehaviour
     public GameObject panelOpenScene;
     void Update()
     {
-        if (characterController.enabled == false && !computerCanvas.activeInHierarchy)
+        if (!computerCanvas.activeInHierarchy)
         {
             characterController.enabled = true;
         }
-
+     
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (isOnTriggerWorkplace && !computerCanvas.activeInHierarchy)
