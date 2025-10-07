@@ -23,7 +23,10 @@ public class RoomPanelUI : MonoBehaviour
     private List<string> _allMessages = new List<string>();
     private int _currentIndex = 0;
     private RoomsData _rooms;
+<<<<<<< Updated upstream:Assets/Scripts/Dialog/RoomPanelUI.cs
     [SerializeField] private CharacterController characterController;
+=======
+>>>>>>> Stashed changes:Assets/Scripts/RoomPanelUI.cs
     [System.Serializable]
     public class TaskData
     {
@@ -79,6 +82,13 @@ public class RoomPanelUI : MonoBehaviour
 
     private void SetButtonLabel(string txt)
     {
+<<<<<<< Updated upstream:Assets/Scripts/Dialog/RoomPanelUI.cs
+=======
+        if(nextButton.GetComponentInChildren<TextMeshProUGUI>().text == "Завершить")
+        {
+            gameObject.SetActive(false);
+        }
+>>>>>>> Stashed changes:Assets/Scripts/RoomPanelUI.cs
 
         if (!nextButton) return;
         var label = nextButton.GetComponentInChildren<TextMeshProUGUI>();
@@ -101,8 +111,11 @@ public class RoomPanelUI : MonoBehaviour
             return;
         }
 
+<<<<<<< Updated upstream:Assets/Scripts/Dialog/RoomPanelUI.cs
 
         // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+=======
+>>>>>>> Stashed changes:Assets/Scripts/RoomPanelUI.cs
         _allMessages.Clear();
 
         List<string> messages = room.start_message.Split(".").ToList();
@@ -124,9 +137,18 @@ public class RoomPanelUI : MonoBehaviour
         if (_allMessages.Count == 0)
             _allMessages.Add("[пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ]");
 
+        if (_allMessages.Count == 1)
+            SetButtonLabel("Завершить");
+
         _currentIndex = 0;
+<<<<<<< Updated upstream:Assets/Scripts/Dialog/RoomPanelUI.cs
         ShowText(_allMessages[_currentIndex]+".");
         SetButtonLabel("пїЅпїЅпїЅпїЅпїЅ");
+=======
+        ShowText(_allMessages[_currentIndex] + ".");
+        print(_allMessages[_currentIndex]);
+        SetButtonLabel("Далее");
+>>>>>>> Stashed changes:Assets/Scripts/RoomPanelUI.cs
     }
         
     private void OnNextClicked()
@@ -146,16 +168,32 @@ public class RoomPanelUI : MonoBehaviour
 
         if (_currentIndex < _allMessages.Count)
         {
+<<<<<<< Updated upstream:Assets/Scripts/Dialog/RoomPanelUI.cs
             ShowText(_allMessages[_currentIndex]+".");
 
             if (_currentIndex == _allMessages.Count - 1)
                 SetButtonLabel("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
+=======
+            ShowText(_allMessages[_currentIndex] + ".");
+
+            if (_currentIndex == _allMessages.Count - 1)
+                SetButtonLabel("Завершить");
+>>>>>>> Stashed changes:Assets/Scripts/RoomPanelUI.cs
             else
                 SetButtonLabel("пїЅпїЅпїЅпїЅпїЅ");
         }
         else
         {
+<<<<<<< Updated upstream:Assets/Scripts/Dialog/RoomPanelUI.cs
             _currentIndex = -1; // пїЅпїЅпїЅпїЅпїЅ
+=======
+            _currentIndex = -1; // сброс
+>>>>>>> Stashed changes:Assets/Scripts/RoomPanelUI.cs
+        }
+
+        if (nextButton.GetComponentInChildren<TextMeshProUGUI>().text != "Завершить")
+        {
+            gameObject.SetActive(false);
         }
     }
 }

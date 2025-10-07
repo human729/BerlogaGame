@@ -15,12 +15,19 @@ public class PlayerTrigger : MonoBehaviour
     [SerializeField] private GameObject computerCanvas;
     [SerializeField] private CharacterController characterController;
     [SerializeField] private string NextScene;
-    public GameObject panelOpenScene;
+    public GameObject StoryObject;
     void Update()
     {
+<<<<<<< Updated upstream
         if (!computerCanvas.activeInHierarchy)
+=======
+        if (!computerCanvas.activeInHierarchy && !StoryObject.activeInHierarchy)
+>>>>>>> Stashed changes
         {
             characterController.enabled = true;
+        } else
+        {
+            characterController.enabled = false;
         }
      
         if (Input.GetKeyDown(KeyCode.E))
@@ -29,13 +36,7 @@ public class PlayerTrigger : MonoBehaviour
             {
                 computerCanvas.SetActive(true);
                 minigame.CreateTask();
-                characterController.enabled = false;
             }
-            //if (isOnTriggerLeverZone)
-            //{
-            //    minigame.SucceedQueries++;
-            //    print(minigame.SucceedQueries);
-            //}
         }
 
         if (inDeadZone)

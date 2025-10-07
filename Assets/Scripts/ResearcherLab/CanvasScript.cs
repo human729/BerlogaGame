@@ -22,8 +22,6 @@ public class CanvasScript : MonoBehaviour
     public Text TaskField;
     public Text resultField;
     [SerializeField] private DatabaseController databaseController;
-    [SerializeField] private GameObject Door;
-    [SerializeField] private GameObject ExitDoor;
     [SerializeField] private Queue<GameObject> TablePCs = new Queue<GameObject>();
 
     public Button buttonPrefab;
@@ -34,7 +32,7 @@ public class CanvasScript : MonoBehaviour
     public List<Button> codeButtons = new List<Button>();
     public InputField inputField;
     public List<string> answerStrings;
-    
+    public GameObject minigameUI;
 
     private void Start()
     {
@@ -42,7 +40,6 @@ public class CanvasScript : MonoBehaviour
         foreach (GameObject PC in PCs)
         {
             TablePCs.Enqueue(PC);
-            print(PC.name);
         }
     }
 
@@ -75,7 +72,7 @@ public class CanvasScript : MonoBehaviour
             Destroy(codeButtons[i].gameObject);
         }
         codeButtons = new List<Button>();
-        gameObject.SetActive(false);
+        minigameUI.SetActive(false);
     }
 
     public void ToggleHelp()

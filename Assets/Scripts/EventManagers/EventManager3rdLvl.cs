@@ -7,6 +7,7 @@ public class EventManager3rdLvl : MonoBehaviour, ICheckConditions
     [SerializeField] private Animator GatesAnimator;
     [SerializeField] private GameObject FirstDoor;
     [SerializeField] private GameObject SecondDoor;
+    [SerializeField] private GameObject ThirdDoor;
     [SerializeField] private int SucceedQueries = 0;
     public void CheckConditions()
     {
@@ -20,6 +21,9 @@ public class EventManager3rdLvl : MonoBehaviour, ICheckConditions
                 SucceedQueries++;
                 break;
             case 1:
+                SecondDoor.GetComponent<BoxCollider2D>().enabled = false;
+                ColorUtility.TryParseHtmlString("#7B97A7", out color);
+                SecondDoor.GetComponent<SpriteRenderer>().color = color;
                 SucceedQueries++;
                 break;
             case 2:
@@ -27,9 +31,9 @@ public class EventManager3rdLvl : MonoBehaviour, ICheckConditions
                 SucceedQueries++;
                 break;
             case 3:
-                SecondDoor.GetComponent<BoxCollider2D>().enabled = false;
+                ThirdDoor.GetComponent<BoxCollider2D>().enabled = false;
                 ColorUtility.TryParseHtmlString("#7B97A7", out color);
-                SecondDoor.GetComponent<SpriteRenderer>().color = color;
+                ThirdDoor.GetComponent<SpriteRenderer>().color = color;
                 SucceedQueries++;
                 break;
             case 4:
