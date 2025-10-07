@@ -19,7 +19,11 @@ public class RoomPanelUI : MonoBehaviour
     private List<string> _allMessages = new List<string>();
     private int _currentIndex = 0;
     private RoomsData _rooms;
+<<<<<<< Updated upstream:Assets/Scripts/Dialog/RoomPanelUI.cs
 
+=======
+    [System.Serializable]
+>>>>>>> Stashed changes:Assets/Scripts/RoomPanelUI.cs
     public class TaskData
     {
         public int task_number;
@@ -116,6 +120,9 @@ public class RoomPanelUI : MonoBehaviour
 
         if (_allMessages.Count == 0)
             _allMessages.Add("[пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ]");
+
+        if (_allMessages.Count == 1)
+            SetButtonLabel("Завершить");
 
         if (_allMessages.Count == 1)
             SetButtonLabel("Завершить");

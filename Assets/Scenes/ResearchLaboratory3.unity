@@ -921,7 +921,11 @@ MonoBehaviour:
   minX: 7.3
   maxX: 11
   minY: -8.3
+<<<<<<< Updated upstream
   maxY: 2.4
+=======
+  maxY: 3.55
+>>>>>>> Stashed changes
 --- !u!1 &548402637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,10 +1420,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< Updated upstream
     - target: {fileID: 3049301895553805573, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+=======
+>>>>>>> Stashed changes
     - target: {fileID: 3116454670052422007, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2795,10 +2802,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5307472683538403020, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+<<<<<<< Updated upstream
       propertyPath: NextScene
       value: 1stLvl
       objectReference: {fileID: 0}
     - target: {fileID: 5307472683538403020, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+=======
+>>>>>>> Stashed changes
       propertyPath: spawnZone
       value: 
       objectReference: {fileID: 1721619947}
