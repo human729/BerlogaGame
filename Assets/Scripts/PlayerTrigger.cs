@@ -12,18 +12,15 @@ public class PlayerTrigger : MonoBehaviour
     private bool isOnTriggerWorkplace;
     private MinigameSQL minigame;
     public GameObject spawnZone;
-    public GameObject StoryObject;
     [SerializeField] private GameObject computerCanvas;
     [SerializeField] private CharacterController characterController;
     [SerializeField] private string NextScene;
+    public GameObject panelOpenScene;
     void Update()
     {
-        if (!computerCanvas.activeInHierarchy && !StoryObject.activeInHierarchy)
+        if (characterController.enabled == false && !computerCanvas.activeInHierarchy)
         {
             characterController.enabled = true;
-        } else
-        {
-            characterController.enabled = false;
         }
         else
         {

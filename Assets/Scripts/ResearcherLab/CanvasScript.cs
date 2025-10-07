@@ -34,7 +34,7 @@ public class CanvasScript : MonoBehaviour
     public List<Button> codeButtons = new List<Button>();
     public InputField inputField;
     public List<string> answerStrings;
-    public GameObject minigameObject;
+    
 
     private void Start()
     {
@@ -75,7 +75,7 @@ public class CanvasScript : MonoBehaviour
             Destroy(codeButtons[i].gameObject);
         }
         codeButtons = new List<Button>();
-        minigameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void ToggleHelp()
