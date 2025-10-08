@@ -13,7 +13,7 @@ public class DatabaseController : MonoBehaviour
     private string dbPath;
     void Start()
     {
-        dbPath = "URI=file:" + Application.dataPath + "/Databases" + DatabaseName;
+        dbPath = "URI=file:" + Application.dataPath + "/StreamingAssets" + DatabaseName;
         print(dbPath);
     }   
 
