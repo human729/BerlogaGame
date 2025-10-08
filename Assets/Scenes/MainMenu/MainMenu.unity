@@ -202,8 +202,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1909440197}
-        m_TargetAssemblyTypeName: ButtonsScript, Assembly-CSharp
+      - m_Target: {fileID: 1830547807}
+        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
         m_MethodName: ToggleSettingsMenu
         m_Mode: 1
         m_Arguments:
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8460988224960050415, guid: 231a3bdc2b15a364baf33e147b7e68d3, type: 3}
   m_PrefabInstance: {fileID: 8143005026662202895}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1830547806}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 070075b383e968a42867151d5ae665ef, type: 3}
@@ -923,6 +923,24 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6742037607237102952, guid: a0be45fc9c1c54d42af2cfd404534318, type: 3}
   m_PrefabInstance: {fileID: 505679165140206669}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1830547806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6291123641849468859, guid: 231a3bdc2b15a364baf33e147b7e68d3, type: 3}
+  m_PrefabInstance: {fileID: 8143005026662202895}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1830547807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830547806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6728ebe359d07ca4bbbd809c94a2b4bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SettingsMenu: {fileID: 1678160922}
 --- !u!1 &1909440192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,7 +1428,15 @@ PrefabInstance:
     - target: {fileID: 7504410842408805934, guid: a0be45fc9c1c54d42af2cfd404534318, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1909440197}
+      objectReference: {fileID: 1830547807}
+    - target: {fileID: 7504410842408805934, guid: a0be45fc9c1c54d42af2cfd404534318, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleSettingsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504410842408805934, guid: a0be45fc9c1c54d42af2cfd404534318, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Settings, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1479,7 +1505,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6291123641849468859, guid: 231a3bdc2b15a364baf33e147b7e68d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1830547807}
   m_SourcePrefab: {fileID: 100100000, guid: 231a3bdc2b15a364baf33e147b7e68d3, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
