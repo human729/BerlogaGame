@@ -1749,6 +1749,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 231a3bdc2b15a364baf33e147b7e68d3, type: 3}
+--- !u!114 &1058485067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8460988224960050415, guid: 231a3bdc2b15a364baf33e147b7e68d3, type: 3}
+  m_PrefabInstance: {fileID: 1058485066}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 070075b383e968a42867151d5ae665ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1173435633 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6555098536729177864, guid: ef89c74f49a059c41a5ba0961394466f, type: 3}
@@ -3346,6 +3357,14 @@ PrefabInstance:
       propertyPath: databaseController
       value: 
       objectReference: {fileID: 1657765572}
+    - target: {fileID: 5637660098184332280, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1058485067}
+    - target: {fileID: 5637660098184332280, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: onMusicVolumeChange
+      objectReference: {fileID: 0}
     - target: {fileID: 5789821504342400316, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3438,6 +3457,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1813048975}
+    - target: {fileID: 8638222989968222177, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1058485067}
+    - target: {fileID: 8638222989968222177, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: onSoundVolumeChange
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
