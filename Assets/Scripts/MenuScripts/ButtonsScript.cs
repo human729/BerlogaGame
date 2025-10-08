@@ -7,7 +7,7 @@ public class ButtonsScript : MonoBehaviour
     [SerializeField] private GameObject SettingsMenu;
     public void StartGame()
     {
-        SceneManager.LoadScene("ResearchLaboratory");
+        SceneManager.LoadScene("FirstLevel");
     }
 
     public void ExitGame()
