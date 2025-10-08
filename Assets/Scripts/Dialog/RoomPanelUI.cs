@@ -6,24 +6,18 @@ using System.Linq;
 
 public class RoomPanelUI : MonoBehaviour
 {
-    [Header("UI-������")]
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI bodyText;
     public Button nextButton;
     public TypewriterTMP typewriter;
 
-    [Header("���������")]
     public TextAsset roomsJson;
     public int startRoomId = 1;
 
     private List<string> _allMessages = new List<string>();
     private int _currentIndex = 0;
     private RoomsData _rooms;
-<<<<<<< Updated upstream:Assets/Scripts/Dialog/RoomPanelUI.cs
 
-=======
-    [System.Serializable]
->>>>>>> Stashed changes:Assets/Scripts/RoomPanelUI.cs
     public class TaskData
     {
         public int task_number;

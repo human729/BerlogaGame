@@ -506,17 +506,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 1953380563}
   CameraSpeed: 12
-<<<<<<< Updated upstream
-  minX: 0.75
-  maxX: 9.53
-  minY: -0.96
-  maxY: -0.96
-=======
   minX: 1.6
   maxX: 9
   minY: -0.8
   maxY: 10
->>>>>>> Stashed changes
 --- !u!1001 &596075808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1764,13 +1757,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-<<<<<<< Updated upstream
     - target: {fileID: 3049301895553805573, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-=======
->>>>>>> Stashed changes
     - target: {fileID: 3116454670052422007, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
