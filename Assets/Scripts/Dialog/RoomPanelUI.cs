@@ -2,15 +2,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
-using System.Linq;
 
 public class RoomPanelUI : MonoBehaviour
 {
+    [Header("UI References")]
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI bodyText;
     public Button nextButton;
     public TypewriterTMP typewriter;
 
+    [Header("Data")]
     public TextAsset roomsJson;
     public int startRoomId = 1;
 
@@ -18,6 +19,7 @@ public class RoomPanelUI : MonoBehaviour
     private int _currentIndex = 0;
     private RoomsData _rooms;
 
+    [System.Serializable]
     public class TaskData
     {
         public int task_number;
@@ -41,125 +43,136 @@ public class RoomPanelUI : MonoBehaviour
     }
 
     private void Awake()
-    {   
-        if (nextButton != null)
-            nextButton.onClick.AddListener(OnNextClicked);
+    {
+        nextButton?.onClick.AddListener(OnNextClicked);
 
         if (!typewriter && bodyText)
             typewriter = bodyText.GetComponent<TypewriterTMP>();
 
         LoadJson();
         BeginRoom(startRoomId);
-        
     }
 
     private void LoadJson()
     {
         if (roomsJson == null)
         {
-            Debug.LogError("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ JSON!");
+            Debug.LogError("Rooms JSON file not assigned!");
             return;
         }
 
-        _rooms = JsonUtility.FromJson<RoomsData>(roomsJson.text);
-    }
-
-    private void ShowText(string txt)
-    {
-        if (typewriter) typewriter.Play(txt);
-        else if (bodyText) bodyText.text = txt;
-    }
-
-    private void SetButtonLabel(string txt)
-    {
-        if(nextButton.GetComponentInChildren<TextMeshProUGUI>().text == "Завершить")
+        try
         {
-            gameObject.SetActive(false);
+            _rooms = JsonUtility.FromJson<RoomsData>(roomsJson.text);
         }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Failed to parse JSON: {e.Message}");
+        }
+    }
+
+    private void ShowText(string text)
+    {
+        if (typewriter)
+            typewriter.Play(text);
+        else if (bodyText)
+            bodyText.text = text;
+    }
+
+    private void UpdateButtonState()
+    {
         if (!nextButton) return;
+
         var label = nextButton.GetComponentInChildren<TextMeshProUGUI>();
-        if (label != null) label.text = txt;
+        if (label != null)
+        {
+            if (_currentIndex >= _allMessages.Count - 1)
+                label.text = "Завершить";
+            else
+                label.text = "Далее";
+        }
     }
 
     public void BeginRoom(int roomId)
     {
-        if (_rooms == null || _rooms.rooms == null)
+        if (_rooms?.rooms == null)
         {
+            Debug.LogError("Rooms data not loaded!");
             return;
         }
 
         var room = _rooms.rooms.Find(r => r.room_id == roomId);
         if (room == null)
         {
+            Debug.LogError($"Room with ID {roomId} not found!");
             return;
         }
 
+        if (titleText != null && !string.IsNullOrEmpty(room.name))
+            titleText.text = room.name;
+
+        CompileRoomMessages(room);
+
+        _currentIndex = 0;
+        ShowCurrentMessage();
+        UpdateButtonState();
+    }
+
+    private void CompileRoomMessages(RoomData room)
+    {
         _allMessages.Clear();
 
-        List<string> messages = room.start_message.Split(".").ToList();
-
-        foreach (string message in messages)
+        if (!string.IsNullOrEmpty(room.start_message))
         {
-            if (!string.IsNullOrEmpty(message)) _allMessages.Add(message);
+            var sentences = room.start_message.Split('.');
+            foreach (var sentence in sentences)
+            {
+                var trimmed = sentence.Trim();
+                if (!string.IsNullOrEmpty(trimmed))
+                    _allMessages.Add(trimmed);
+            }
         }
 
         if (room.rooms_tasks != null)
         {
             foreach (var task in room.rooms_tasks)
             {
-                if (!string.IsNullOrEmpty(task.message)) _allMessages.Add(task.message);
-                if (!string.IsNullOrEmpty(task.after_passing)) _allMessages.Add(task.after_passing);
+                if (!string.IsNullOrEmpty(task.message))
+                    _allMessages.Add(task.message.Trim());
+
+                if (!string.IsNullOrEmpty(task.after_passing))
+                    _allMessages.Add(task.after_passing.Trim());
             }
         }
 
         if (_allMessages.Count == 0)
-            _allMessages.Add("[пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ]");
-
-        if (_allMessages.Count == 1)
-            SetButtonLabel("Завершить");
-
-        if (_allMessages.Count == 1)
-            SetButtonLabel("Завершить");
-
-        _currentIndex = 0;
-        ShowText(_allMessages[_currentIndex] + ".");
-        print(_allMessages[_currentIndex]);
-        SetButtonLabel("Далее");
+            _allMessages.Add("Нет сообщений");
     }
-        
+
+    private void ShowCurrentMessage()
+    {
+        if (_currentIndex < _allMessages.Count)
+        {
+            ShowText(_allMessages[_currentIndex] + ".");
+        }
+    }
+
     private void OnNextClicked()
     {
-        if (nextButton.GetComponentInChildren<TextMeshProUGUI>().text == "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
-        {
-            gameObject.SetActive(false);
-        }
-
         if (typewriter && typewriter.IsTyping)
         {
             typewriter.Complete();
             return;
         }
 
-        _currentIndex++;
-
-        if (_currentIndex < _allMessages.Count)
-        {
-            ShowText(_allMessages[_currentIndex] + ".");
-
-            if (_currentIndex == _allMessages.Count - 1)
-                SetButtonLabel("Завершить");
-            else
-                SetButtonLabel("пїЅпїЅпїЅпїЅпїЅ");
-        }
-        else
-        {
-            _currentIndex = -1; // сброс
-        }
-
-        if (nextButton.GetComponentInChildren<TextMeshProUGUI>().text != "Завершить")
+        if (_currentIndex >= _allMessages.Count - 1)
         {
             gameObject.SetActive(false);
+            return;
         }
+
+        _currentIndex++;
+        ShowCurrentMessage();
+        UpdateButtonState();
     }
 }
-

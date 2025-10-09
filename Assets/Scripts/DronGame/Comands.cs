@@ -32,6 +32,7 @@ public class Comands : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q) && currentExecution == null)
             {
                 isGameStart = true;
+                Destroy(phantomDron);
                 player.GetComponent<CharacterController>().enabled = true;
                 currentExecution = StartCoroutine(ExecuteMoves());
                 if (transform.name == "Dron")

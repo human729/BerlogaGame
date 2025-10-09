@@ -5,9 +5,13 @@ using UnityEngine;
 public class Education4Programmers  : MonoBehaviour
 {
     [SerializeField] GameObject InterfaceUI;
-    void Start()
+    [SerializeField] GameObject Story;
+    void Awake()
     {
-        InterfaceUI.SetActive(true);
+        if (!Story.activeInHierarchy)
+        {
+            InterfaceUI.SetActive(true);
+        }
     }
 
     void Update()
@@ -15,7 +19,7 @@ public class Education4Programmers  : MonoBehaviour
         if (Input.anyKeyDown) 
         { 
             InterfaceUI.SetActive(false);
-            enabled = false;
+          
         }
     }
 }

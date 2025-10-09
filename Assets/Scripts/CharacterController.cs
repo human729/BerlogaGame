@@ -9,7 +9,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] public Rigidbody2D rb;
     [SerializeField] public float rayCastOffset;
     public AudioSource source;
-
+  
     void Update()
     {
         InputX = Input.GetAxis("Horizontal");
@@ -26,7 +26,7 @@ public class CharacterController : MonoBehaviour
         transform.position += new Vector3(InputX * Time.deltaTime * Speed, 0f);
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(0, rayCastOffset), new Vector3(0, -0.1f), .1f);
-
+        Debug.DrawRay(transform.position - new Vector3(0, rayCastOffset), new Vector3(0, -0.1f));
         //if (InputX == 0 && hit.collider != null)
         //{
         //    source.Play();
@@ -43,6 +43,7 @@ public class CharacterController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Space) && hit.collider.CompareTag("Ground"))
             {
+
                 rb.AddForce(Vector3.up * JumpPower, ForceMode2D.Impulse);
             }
         }

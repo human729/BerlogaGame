@@ -14,6 +14,7 @@ public class NextLevell : MonoBehaviour
                 animtor.SetBool("DronInTrigger", false);
             }
             SceneManager.LoadScene(sceneName);
+            CanvasManager.IsStoryEnd = false;
         }
     }
 }
