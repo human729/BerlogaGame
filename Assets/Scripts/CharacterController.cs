@@ -19,16 +19,9 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         inputX = Input.GetAxisRaw("Horizontal");
-
-        if (inputX > 0)
-        {
-            transform.localScale = new Vector3(0.1926267f, 0.1926267f, 0.1926267f);
-        }
-        else if (inputX < 0)
-        {
-            transform.localScale = new Vector3(-0.1926267f, 0.1926267f, 0.1926267f);
-        }
-
+        Vector3 scale = transform.localScale;
+        scale.x = Input.GetAxis("Horizontal") < 0 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+        transform.localScale = scale;
         transform.position += new Vector3(inputX * Speed * Time.deltaTime, 0f);
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(0, rayCastOffset), Vector2.down, 0.1f);

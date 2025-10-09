@@ -5,7 +5,7 @@ public class PlrTrigger : MonoBehaviour
     private bool isOnTriggerLampZone = false;
     private bool isOnTriggerTempControl = false;
     private bool isOnTriggerWorkplace = false;
-
+    public GameObject StoryObject;
     [SerializeField] private GameObject TempControlGameObject;
     [SerializeField] private GameObject ColorControlGameObject;
     [SerializeField] private GameObject computerCanvas;
@@ -19,6 +19,14 @@ public class PlrTrigger : MonoBehaviour
 
     private void Update()
     {
+        if (!StoryObject.activeInHierarchy)
+        {
+            characterController.enabled = true;
+        }
+        else
+        {
+            characterController.enabled = false;
+        }
         if (!TempControlGameObject.activeInHierarchy && !ColorControlGameObject.activeInHierarchy)
         {
             characterController.enabled = true;

@@ -1209,7 +1209,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6112637531183808456, guid: 9018f09ccbe216742a01f96b931d0be1, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 572b538d0cb99b14c95fa966a5762735, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 572b538d0cb99b14c95fa966a5762735, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -3319,7 +3319,7 @@ PrefabInstance:
     - target: {fileID: 5013811853590014031, guid: f33af6e9df685024690dae985e518880, type: 3}
       propertyPath: controller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1093112154}
     - target: {fileID: 5013811853590014031, guid: f33af6e9df685024690dae985e518880, type: 3}
       propertyPath: EscapePanel
       value: 
@@ -3851,6 +3851,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1362766609754728398, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1166499156}
+    - target: {fileID: 1362766609754728398, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
       propertyPath: JumpPower
       value: 5
       objectReference: {fileID: 0}
@@ -3928,6 +3932,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+--- !u!114 &1093112154 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1362766609754728398, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+  m_PrefabInstance: {fileID: 1093112153}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea261a24f971e4640910ff79009581fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1117517520
 GameObject:
   m_ObjectHideFlags: 0
@@ -4208,6 +4223,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5e7c4c072a8dc42b1f2747f9db4608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1166499156 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4254214627250112015, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+  m_PrefabInstance: {fileID: 1093112153}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1218988198
 GameObject:
   m_ObjectHideFlags: 0

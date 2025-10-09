@@ -2654,7 +2654,7 @@ PrefabInstance:
     - target: {fileID: 5013811853590014031, guid: f33af6e9df685024690dae985e518880, type: 3}
       propertyPath: EscapePanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1208189731}
     - target: {fileID: 5132100169984296572, guid: f33af6e9df685024690dae985e518880, type: 3}
       propertyPath: m_Name
       value: SettingsManager
@@ -2704,6 +2704,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f33af6e9df685024690dae985e518880, type: 3}
+--- !u!1 &1208189731 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1424675829616137070, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+  m_PrefabInstance: {fileID: 711513571}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1232346804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3171,6 +3176,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1362766609754728398, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+      propertyPath: Speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362766609754728398, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1496317200}
+    - target: {fileID: 1362766609754728398, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+      propertyPath: JumpPower
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3071096082392261317, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3256,6 +3273,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea261a24f971e4640910ff79009581fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!95 &1496317200 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4254214627250112015, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+  m_PrefabInstance: {fileID: 1496317195}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1517791734
 PrefabInstance:
   m_ObjectHideFlags: 0

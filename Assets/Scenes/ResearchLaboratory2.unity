@@ -831,7 +831,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7303205977772424165, guid: c26c852d1a412154182348f94fbe594c, type: 2}
-  m_audioClip: {fileID: 8300000, guid: c0f41d6b2d22aeb448262c1cb12af9be, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: c0f41d6b2d22aeb448262c1cb12af9be, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1807,6 +1807,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6555098536729177864, guid: ef89c74f49a059c41a5ba0961394466f, type: 3}
   m_PrefabInstance: {fileID: 1250731777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1217257226 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1424675829616137070, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+  m_PrefabInstance: {fileID: 2033882457116476974}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1232346804
 PrefabInstance:
@@ -2863,7 +2868,7 @@ PrefabInstance:
     - target: {fileID: 5013811853590014031, guid: f33af6e9df685024690dae985e518880, type: 3}
       propertyPath: EscapePanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1217257226}
     - target: {fileID: 5132100169984296572, guid: f33af6e9df685024690dae985e518880, type: 3}
       propertyPath: m_Name
       value: SettingsManager
@@ -3288,6 +3293,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1362766609754728398, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+      propertyPath: Speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362766609754728398, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1672837445052908592}
+    - target: {fileID: 1362766609754728398, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+      propertyPath: JumpPower
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362766609754728398, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+      propertyPath: rayCastOffset
+      value: 1.34
+      objectReference: {fileID: 0}
     - target: {fileID: 3071096082392261317, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3364,6 +3385,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea261a24f971e4640910ff79009581fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!95 &1672837445052908592 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4254214627250112015, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+  m_PrefabInstance: {fileID: 1672837445052908588}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2033882457116476974
 PrefabInstance:
   m_ObjectHideFlags: 0

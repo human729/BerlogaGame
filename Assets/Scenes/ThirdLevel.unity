@@ -2542,7 +2542,7 @@ PrefabInstance:
     - target: {fileID: 5013811853590014031, guid: f33af6e9df685024690dae985e518880, type: 3}
       propertyPath: controller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1964800585}
     - target: {fileID: 5013811853590014031, guid: f33af6e9df685024690dae985e518880, type: 3}
       propertyPath: EscapePanel
       value: 
@@ -5141,6 +5141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 070075b383e968a42867151d5ae665ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1582664098 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4254214627250112015, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+  m_PrefabInstance: {fileID: 1964800584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1615291508
 GameObject:
   m_ObjectHideFlags: 0
@@ -6577,12 +6582,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1362766609754728398, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1582664098}
+    - target: {fileID: 1362766609754728398, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
       propertyPath: JumpPower
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1362766609754728398, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
       propertyPath: rayCastOffset
-      value: 0.61
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3071096082392261317, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
       propertyPath: m_Name
@@ -6640,12 +6649,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8953242087727100941, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+      propertyPath: m_Size.y
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8953242087727100941, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.39
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5307472683538403020, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+--- !u!114 &1964800585 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1362766609754728398, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+  m_PrefabInstance: {fileID: 1964800584}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea261a24f971e4640910ff79009581fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1993537728
 GameObject:
   m_ObjectHideFlags: 0
