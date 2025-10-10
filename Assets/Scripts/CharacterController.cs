@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class CharacterController : MonoBehaviour
 {
     [Header("Movement Settings")]
@@ -15,48 +16,52 @@ public class CharacterController : MonoBehaviour
 
     private float inputX;
     private bool isGrounded;
+    private bool isOnElevator;
+    public bool canMove = true;
 
 
     void Update()
     {
+        if (!canMove)
+        {
+            animator.SetBool("MovingRight", false);
+            return;
+        }
+
         inputX = Input.GetAxisRaw("Horizontal");
 
-
-        Vector3 scale = transform.localScale;
-        if (inputX < 0)
+        if (inputX != 0)
         {
-            scale.x = -Mathf.Abs(scale.x);
-        } else if (inputX > 0)
-        {
-            scale.x = Mathf.Abs(scale.x);
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x) * (inputX < 0 ? -1 : 1);
+            transform.localScale = scale;
         }
-        transform.localScale = scale;
 
         transform.position += new Vector3(inputX * Speed * Time.deltaTime, 0f);
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(0, rayCastOffset), Vector2.down, 0.1f);
         Debug.DrawRay(transform.position - new Vector3(0, rayCastOffset), Vector2.down * 0.1f, Color.red);
 
-        isGrounded = hit.collider != null && (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Elevator") || hit.collider.CompareTag("Platform"));
+        isOnElevator = hit.collider != null && hit.collider.CompareTag("Elevator");
+        isGrounded = hit.collider != null && (hit.collider.CompareTag("Ground") || isOnElevator);
+
         animator.SetBool("IsGrounded", isGrounded);
         animator.SetBool("MovingRight", inputX != 0 && isGrounded);
+
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
             animator.SetBool("JumpingRight", true);
         }
-        if (!isGrounded && rb.linearVelocity.y < 0)
-        {
-            animator.SetBool("JumpingRight", false);
-        }
-        if (isGrounded && rb.linearVelocity.y <= 0)
+
+        if ((!isGrounded && rb.linearVelocity.y < 0) || (isGrounded && rb.linearVelocity.y <= 0 && !isOnElevator))
         {
             animator.SetBool("JumpingRight", false);
         }
 
         if (hit.collider != null)
         {
-            if (hit.collider.CompareTag("Elevator"))
+            if (isOnElevator)
             {
                 transform.parent = hit.collider.transform;
             }

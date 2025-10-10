@@ -53,27 +53,39 @@ public class Comands : MonoBehaviour
         phantomDron = new GameObject("PhantomDron");
         phantomDron.transform.SetParent(transform);
 
+        phantomDron.transform.localPosition = dron.transform.localPosition;
+        phantomDron.transform.localRotation = dron.transform.localRotation;
+        phantomDron.transform.localScale = new Vector3(1,1,1);
+
         SpriteRenderer originalRenderer = dron.GetComponent<SpriteRenderer>();
         if (originalRenderer != null)
         {
             phantomRenderer = phantomDron.AddComponent<SpriteRenderer>();
             phantomRenderer.sprite = originalRenderer.sprite;
-            phantomRenderer.color = new Color(0.5f, 0.5f, 1f, 0.7f);
             phantomRenderer.sortingOrder = originalRenderer.sortingOrder - 1;
+            phantomRenderer.color = new Color(1f, 1f, 1f, 0.5f); 
         }
 
         Collider2D originalCollider = dron.GetComponent<Collider2D>();
         if (originalCollider != null)
         {
-            if (originalCollider is BoxCollider2D)
+            if (originalCollider is BoxCollider2D originalBox)
             {
                 BoxCollider2D phantomCollider = phantomDron.AddComponent<BoxCollider2D>();
-                phantomCollider.size = ((BoxCollider2D)originalCollider).size;
+                phantomCollider.size = originalBox.size;
+                phantomCollider.offset = originalBox.offset; 
             }
-            else if (originalCollider is CircleCollider2D)
+            else if (originalCollider is CircleCollider2D originalCircle)
             {
                 CircleCollider2D phantomCollider = phantomDron.AddComponent<CircleCollider2D>();
-                phantomCollider.radius = ((CircleCollider2D)originalCollider).radius;
+                phantomCollider.radius = originalCircle.radius;
+                phantomCollider.offset = originalCircle.offset; 
+            }
+            else if (originalCollider is PolygonCollider2D originalPolygon)
+            {
+                PolygonCollider2D phantomCollider = phantomDron.AddComponent<PolygonCollider2D>();
+                phantomCollider.points = originalPolygon.points;
+                phantomCollider.offset = originalPolygon.offset;
             }
             phantomDron.GetComponent<Collider2D>().isTrigger = true;
         }
