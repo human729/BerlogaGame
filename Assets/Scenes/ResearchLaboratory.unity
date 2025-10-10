@@ -2038,7 +2038,47 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 67078496}
+    - target: {fileID: 2226440665868188490, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 523
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226440665868188490, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 389
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226440665868188490, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226440665868188490, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -7
+      objectReference: {fileID: 0}
     - target: {fileID: 2265267303286981655, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2487936871993234685, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6154
+      objectReference: {fileID: 0}
+    - target: {fileID: 2487936871993234685, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6154
+      objectReference: {fileID: 0}
+    - target: {fileID: 2487936871993234685, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6154
+      objectReference: {fileID: 0}
+    - target: {fileID: 2487936871993234685, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 326
+      objectReference: {fileID: 0}
+    - target: {fileID: 2487936871993234685, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 205
+      objectReference: {fileID: 0}
+    - target: {fileID: 2727279781277696157, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -2070,6 +2110,10 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 580726530}
+    - target: {fileID: 5707878857178521636, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 5789821504342400316, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
       propertyPath: m_Pivot.x
       value: 0
