@@ -19,15 +19,23 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         inputX = Input.GetAxisRaw("Horizontal");
+
         Vector3 scale = transform.localScale;
-        scale.x = Input.GetAxis("Horizontal") < 0 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+        if (inputX < 0)
+        {
+            scale.x = -Mathf.Abs(scale.x);
+        } else if (inputX > 0)
+        {
+            scale.x = Mathf.Abs(scale.x);
+        }
         transform.localScale = scale;
+
         transform.position += new Vector3(inputX * Speed * Time.deltaTime, 0f);
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(0, rayCastOffset), Vector2.down, 0.1f);
         Debug.DrawRay(transform.position - new Vector3(0, rayCastOffset), Vector2.down * 0.1f, Color.red);
 
-        isGrounded = hit.collider != null && hit.collider.CompareTag("Ground");
+        isGrounded = hit.collider != null && (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Elevator") || hit.collider.CompareTag("Platform"));
         animator.SetBool("IsGrounded", isGrounded);
         animator.SetBool("MovingRight", inputX != 0 && isGrounded);
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)

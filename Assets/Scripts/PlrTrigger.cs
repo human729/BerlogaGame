@@ -1,11 +1,14 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlrTrigger : MonoBehaviour
 {
+    private bool inDeadZone = false;
     private bool isOnTriggerLampZone = false;
     private bool isOnTriggerTempControl = false;
     private bool isOnTriggerWorkplace = false;
     public GameObject StoryObject;
+    [SerializeField] private GameObject spawnZone;
     [SerializeField] private GameObject TempControlGameObject;
     [SerializeField] private GameObject ColorControlGameObject;
     [SerializeField] private GameObject computerCanvas;
@@ -19,6 +22,10 @@ public class PlrTrigger : MonoBehaviour
 
     private void Update()
     {
+        if (inDeadZone)
+        {
+            StartCoroutine(Spawn());
+        }
         if (!StoryObject.activeInHierarchy)
         {
             characterController.enabled = true;
@@ -65,6 +72,9 @@ public class PlrTrigger : MonoBehaviour
 
         if (collision.CompareTag("TempControl"))
             isOnTriggerTempControl = true;
+
+        if (collision.CompareTag("DeadZone"))
+            inDeadZone = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -77,10 +87,21 @@ public class PlrTrigger : MonoBehaviour
 
         if (collision.CompareTag("TempControl"))
             isOnTriggerTempControl = false;
+
+        if (collision.CompareTag("DeadZone"))
+            inDeadZone = true;
     }
 
     private void TurnOffMovement()
     {
         characterController.enabled = false;
+    }
+
+    IEnumerator Spawn()
+    {
+        gameObject.GetComponent<CharacterController>().enabled = false;
+        yield return new WaitForSeconds(.3f);
+        transform.position = spawnZone.transform.position;
+        gameObject.GetComponent<CharacterController>().enabled = true;
     }
 }
