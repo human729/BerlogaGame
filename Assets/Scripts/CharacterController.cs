@@ -16,9 +16,11 @@ public class CharacterController : MonoBehaviour
     private float inputX;
     private bool isGrounded;
 
+
     void Update()
     {
         inputX = Input.GetAxisRaw("Horizontal");
+
 
         Vector3 scale = transform.localScale;
         if (inputX < 0)
@@ -56,7 +58,7 @@ public class CharacterController : MonoBehaviour
         {
             if (hit.collider.CompareTag("Elevator"))
             {
-                transform.parent = hit.transform;
+                transform.parent = hit.collider.transform;
             }
             else
             {
