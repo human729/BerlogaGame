@@ -19,21 +19,17 @@ public class PlrTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (!StoryObject.activeInHierarchy)
+        if (StoryObject.activeInHierarchy)
         {
-            characterController.enabled = true;
+            characterController.canMove = false;
         }
-        else
+        else if (!TempControlGameObject.activeInHierarchy && !ColorControlGameObject.activeInHierarchy)
         {
-            characterController.enabled = false;
+            characterController.canMove = true;
         }
-        if (!TempControlGameObject.activeInHierarchy && !ColorControlGameObject.activeInHierarchy)
+        else if (TempControlGameObject.activeInHierarchy || ColorControlGameObject.activeInHierarchy)
         {
-            characterController.enabled = true;
-        }
-        else if (TempControlGameObject.activeInHierarchy && ColorControlGameObject.activeInHierarchy)
-        {
-            characterController.enabled = false;
+            characterController.canMove = false;
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -81,6 +77,6 @@ public class PlrTrigger : MonoBehaviour
 
     private void TurnOffMovement()
     {
-        characterController.enabled = false;
+        characterController.canMove = false;
     }
 }
