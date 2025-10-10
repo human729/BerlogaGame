@@ -5,13 +5,14 @@
         public float Speed = 5f;
         public float JumpPower = 10f;
 
+
         [Header("Components")]
         public Rigidbody2D rb;
         public Animator animator;
         public AudioSource source;
-
         [Header("Raycast")]
         public float rayCastOffset = 0.5f;
+
 
         private float inputX;
         private bool isGrounded;

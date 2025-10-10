@@ -12,6 +12,8 @@ TagManager:
   - DeadZone
   - Elevator
   - Ground
+  - TempControl
+  - Platform
   layers:
   - Default
   - TransparentFX
