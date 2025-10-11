@@ -923,8 +923,8 @@ RectTransform:
   - {fileID: 3886897225184978695}
   - {fileID: 7187077904347214349}
   - {fileID: 8434858825485068908}
-  - {fileID: 8136847797114723498}
   - {fileID: 962657468482253677}
+  - {fileID: 8136847797114723498}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1879,7 +1879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1887,7 +1887,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d0c00c1efdd0f714694ba0360080a599, type: 3}
+    m_Font: {fileID: 12800000, guid: 70b462ecc5978534db56169159f73265, type: 3}
     m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0

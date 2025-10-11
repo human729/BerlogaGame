@@ -17,6 +17,7 @@ public class CharacterController : MonoBehaviour
     private float inputX;
     private bool isGrounded;
     private bool isOnElevator;
+    private bool isOnPlatform;
     public bool canMove = true;
 
 
@@ -43,7 +44,8 @@ public class CharacterController : MonoBehaviour
         Debug.DrawRay(transform.position - new Vector3(0, rayCastOffset), Vector2.down * 0.1f, Color.red);
 
         isOnElevator = hit.collider != null && hit.collider.CompareTag("Elevator");
-        isGrounded = hit.collider != null && (hit.collider.CompareTag("Ground") || isOnElevator);
+        isOnPlatform = hit.collider != null && hit.collider.CompareTag("Platform");
+        isGrounded = hit.collider != null && (hit.collider.CompareTag("Ground") || isOnElevator || isOnPlatform);
 
         animator.SetBool("IsGrounded", isGrounded);
         animator.SetBool("MovingRight", inputX != 0 && isGrounded);
@@ -54,7 +56,7 @@ public class CharacterController : MonoBehaviour
             animator.SetBool("JumpingRight", true);
         }
 
-        if ((!isGrounded && rb.linearVelocity.y < 0) || (isGrounded && rb.linearVelocity.y <= 0 && !isOnElevator))
+        if ((!isGrounded && rb.linearVelocity.y < 0) || (isGrounded && rb.linearVelocity.y <= 0 && !isOnElevator) || (isGrounded && rb.linearVelocity.y <= 0 && !isOnPlatform))
         {
             animator.SetBool("JumpingRight", false);
         }

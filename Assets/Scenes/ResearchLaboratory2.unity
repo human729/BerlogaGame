@@ -235,7 +235,7 @@ SpriteRenderer:
   m_Size: {x: 30, y: 1.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &2219478
@@ -369,7 +369,7 @@ SpriteRenderer:
   m_Size: {x: 5.28, y: 1.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &114553948
@@ -503,7 +503,7 @@ SpriteRenderer:
   m_Size: {x: 5.28, y: 1.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &155117349
@@ -769,7 +769,7 @@ SpriteRenderer:
   m_Size: {x: 7.31, y: 1.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &424251573
@@ -964,7 +964,7 @@ AudioSource:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 7303205977772424165, guid: c26c852d1a412154182348f94fbe594c, type: 2}
+  OutputAudioMixerGroup: {fileID: -6856728257160405116, guid: 9018f09ccbe216742a01f96b931d0be1, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: c0f41d6b2d22aeb448262c1cb12af9be, type: 3}
   m_PlayOnAwake: 1
@@ -1179,7 +1179,7 @@ SpriteRenderer:
   m_Size: {x: 7.31, y: 1.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &586408966
@@ -2392,7 +2392,7 @@ SpriteRenderer:
   m_Size: {x: 8.1, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1302592952
@@ -2613,7 +2613,7 @@ SpriteRenderer:
   m_Size: {x: 1.25, y: 2.29}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1522583124
@@ -3298,7 +3298,7 @@ SpriteRenderer:
   m_Size: {x: 1.25, y: 13.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &2124186073
@@ -3432,7 +3432,7 @@ SpriteRenderer:
   m_Size: {x: 1.25, y: 8.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &2147413505
@@ -3534,6 +3534,10 @@ PrefabInstance:
       propertyPath: panelOpenScene
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5438686951825660289, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 6112637531183808456, guid: 9018f09ccbe216742a01f96b931d0be1, type: 2}
     - target: {fileID: 5448375531745974038, guid: 341a156c1feedae48a682b6e43189c7c, type: 3}
       propertyPath: m_Mass
       value: 1
