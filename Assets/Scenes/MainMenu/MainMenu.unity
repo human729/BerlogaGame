@@ -826,7 +826,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -6856728257160405116, guid: 9018f09ccbe216742a01f96b931d0be1, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 8752a458052bbc64f861643d79714ea4, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8752a458052bbc64f861643d79714ea4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1338,6 +1338,18 @@ PrefabInstance:
       value: SettingsPanel
       objectReference: {fileID: 0}
     - target: {fileID: 6528608144932427299, guid: a0be45fc9c1c54d42af2cfd404534318, type: 3}
+      propertyPath: m_Value
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528608144932427299, guid: a0be45fc9c1c54d42af2cfd404534318, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528608144932427299, guid: a0be45fc9c1c54d42af2cfd404534318, type: 3}
+      propertyPath: m_MinValue
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528608144932427299, guid: a0be45fc9c1c54d42af2cfd404534318, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 264505266}
@@ -1420,6 +1432,18 @@ PrefabInstance:
     - target: {fileID: 6742037607237102952, guid: a0be45fc9c1c54d42af2cfd404534318, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153855252694544954, guid: a0be45fc9c1c54d42af2cfd404534318, type: 3}
+      propertyPath: m_Value
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153855252694544954, guid: a0be45fc9c1c54d42af2cfd404534318, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153855252694544954, guid: a0be45fc9c1c54d42af2cfd404534318, type: 3}
+      propertyPath: m_MinValue
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 7153855252694544954, guid: a0be45fc9c1c54d42af2cfd404534318, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target

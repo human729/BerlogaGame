@@ -26,7 +26,7 @@ public class PlrTrigger : MonoBehaviour
         {
             StartCoroutine(Spawn());
         }
-        if (!StoryObject.activeInHierarchy)
+        if (StoryObject.activeInHierarchy)
         {
             characterController.canMove = false;
         }
@@ -85,7 +85,7 @@ public class PlrTrigger : MonoBehaviour
             isOnTriggerTempControl = false;
 
         if (collision.CompareTag("DeadZone"))
-            inDeadZone = true;
+            inDeadZone = false;
     }
 
     private void TurnOffMovement()
@@ -99,5 +99,6 @@ public class PlrTrigger : MonoBehaviour
         yield return new WaitForSeconds(.3f);
         transform.position = spawnZone.transform.position;
         gameObject.GetComponent<CharacterController>().enabled = true;
+        inDeadZone = false;
     }
 }

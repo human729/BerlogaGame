@@ -16,11 +16,13 @@ public class LeverElevator : MonoBehaviour
             {
                 ElevatorAnimator.SetBool("isButtonOn", true);
                 elevatorWork = true;
+                transform.rotation = new Quaternion(0,180,0, 1);
             }
             else
             {
                 ElevatorAnimator.SetBool("isButtonOn", false);
                 elevatorWork = false;
+                transform.rotation = new Quaternion(0, 0, 0, 1);
             }
         }
     }
