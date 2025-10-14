@@ -7,7 +7,7 @@ public class ButtonsScript : MonoBehaviour
     [SerializeField] private GameObject SettingsMenu;
     public void StartGame()
     {
-        SceneManager.LoadScene("FirstLevel");
+        SceneManager.LoadScene("ChoiseTradition");
     }
 
     public void ExitGame()
