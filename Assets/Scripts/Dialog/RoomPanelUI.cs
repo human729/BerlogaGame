@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
 
 public class RoomPanelUI : MonoBehaviour
 {
@@ -168,6 +170,10 @@ public class RoomPanelUI : MonoBehaviour
         if (_currentIndex >= _allMessages.Count - 1)
         {
             gameObject.SetActive(false);
+            if(SceneManager.GetActiveScene().name == "EndScene")
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
             return;
         }
 

@@ -61,7 +61,7 @@ public class TransitionLvl : MonoBehaviour
         fadeImage.color = new Color(0, 0, 0, targetAlpha);
     }
 
-    private void FadeObject()
+    public void FadeObject()
     {
         fadeCanvasObject = new GameObject("Fade");
         fadeCanvasObject.transform.SetParent(transform);
