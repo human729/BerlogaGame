@@ -89,6 +89,7 @@ public class PlayerTrigger : MonoBehaviour
     IEnumerator OpenScene()
     {
         yield return new WaitForSeconds(.3f);
+        TransitionLvl.Instance.LoadSceneWith(NextScene);
         SceneManager.LoadScene(NextScene);
     }
 }

@@ -13,7 +13,8 @@ public class NextLevell : MonoBehaviour
             foreach (var animtor in animator) {
                 animtor.SetBool("DronInTrigger", false);
             }
-            SceneManager.LoadScene(sceneName);
+
+            TransitionLvl.Instance.LoadSceneWith(sceneName);
             CanvasManager.IsStoryEnd = false;
         }
     }
