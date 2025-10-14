@@ -19,6 +19,7 @@ public class MinigameSQL : MonoBehaviour
     public string answer;
 
     public GameObject Player;
+    [SerializeField] GameObject Hint;
 
     public void CreateTask()
     {
@@ -63,5 +64,18 @@ public class MinigameSQL : MonoBehaviour
                 throw new Exception("No such scene");
         }
         answer = taskAndAnswer["answer"].ToString();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Hint.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Hint.SetActive(false);
     }
 }
