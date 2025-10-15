@@ -407,12 +407,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155117346}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.97, y: -5.02, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.5195017, y: -4.985576, z: 0.089944415}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2058396357}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &320213564 stripped
 MonoBehaviour:
@@ -985,11 +985,11 @@ Transform:
   m_GameObject: {fileID: 615464854}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0043261983, y: -0, z: -0, w: 0.99999064}
-  m_LocalPosition: {x: -9.07, y: -1.49, z: 0}
+  m_LocalPosition: {x: -10.520497, y: -1.455576, z: 0.089944415}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2058396357}
   m_LocalEulerAnglesHint: {x: 0.496, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
@@ -1484,12 +1484,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1084777417}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.3, y: 2.9872565, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.8495023, y: 3.0216806, z: 0.089944415}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2058396357}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1115023017
 GameObject:
@@ -1878,11 +1878,11 @@ Transform:
   m_GameObject: {fileID: 1695256719}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0043261983, y: -0, z: -0, w: 0.99999064}
-  m_LocalPosition: {x: 18.67, y: 1.85, z: 0}
+  m_LocalPosition: {x: 17.219501, y: 1.8844241, z: 0.089944415}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2058396357}
   m_LocalEulerAnglesHint: {x: 0.496, y: 0, z: 0}
 --- !u!1 &1738283534 stripped
 GameObject:
@@ -2147,6 +2147,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2058396356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2058396357}
+  m_Layer: 0
+  m_Name: World
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2058396357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058396356}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4504979, y: -0.034424044, z: -0.089944415}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 155117349}
+  - {fileID: 1084777420}
+  - {fileID: 2124186073}
+  - {fileID: 1695256722}
+  - {fileID: 615464857}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2124186070
 GameObject:
   m_ObjectHideFlags: 0
@@ -2227,12 +2263,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124186070}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.11, y: -0.96, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.560498, y: -0.9255759, z: 0.089944415}
   m_LocalScale: {x: 1.26, y: 1.27, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2058396357}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2141193654
 GameObject:
@@ -2579,11 +2615,6 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1657765571}
   - {fileID: 1479818635}
-  - {fileID: 155117349}
-  - {fileID: 1084777420}
-  - {fileID: 2124186073}
-  - {fileID: 1695256722}
-  - {fileID: 615464857}
   - {fileID: 7128387758948730113}
   - {fileID: 1039623405}
   - {fileID: 403830047}
@@ -2597,3 +2628,4 @@ SceneRoots:
   - {fileID: 1832388756}
   - {fileID: 2141193656}
   - {fileID: 6794467689728575953}
+  - {fileID: 2058396357}
