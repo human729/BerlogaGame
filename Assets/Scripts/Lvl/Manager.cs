@@ -34,8 +34,8 @@ public class Manager : MonoBehaviour
         mainTargetTemp = Random.Range(0, 31);
         otherTargetTemp = Random.Range(0, 31);
 
-        DoorOpenInfo.text = $"<color=#1164B4>Главная:</color> T = {mainTargetTemp}°C, цвет = {mainTargetColor}\n" +
-                            $"<color=#1164B4>Остальные:</color> T = {otherTargetTemp}°C, цвет = {otherTargetColor}";
+        DoorOpenInfo.text = $"<color=#93AF48>Главная:</color> T = {mainTargetTemp}°C, цвет = {mainTargetColor}\n" +
+                            $"<color=#93AF48>Остальные:</color> T = {otherTargetTemp}°C, цвет = {otherTargetColor}";
     }
 
     void Update()

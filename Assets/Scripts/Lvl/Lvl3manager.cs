@@ -52,10 +52,10 @@ public class Lvl3Manager : MonoBehaviour
         if (DoorOpenInfo != null)
         {
             DoorOpenInfo.text =
-                $"<color=#1164B4>Главная дверь:</color> T = {mainTargetTemp}°C, Л1 = {mainTargetColor}, Л2 = {otherTargetColor}\n" +
-                $"<color=#1164B4>Лифт 1:</color> T = {elevatorTargetTemp}°C " +
-                $"<color=#1164B4>Лифт 2:</color> Л1 = {elevator2TargetColor}\n" +
-                $"<color=#1164B4>Платформа:</color> Л2 = {platformTargetColor}";
+                $"<color=#93AF48>Главная дверь:</color> T = {mainTargetTemp}°C, Л1 = {mainTargetColor}, Л2 = {otherTargetColor}\n" +
+                $"<color=#93AF48>Лифт 1:</color> T = {elevatorTargetTemp}°C " +
+                $"<color=#93AF48>Лифт 2:</color> Л1 = {elevator2TargetColor}\n" +
+                $"<color=#93AF48>Платформа:</color> Л2 = {platformTargetColor}";
         }
     }
     string[] GetColorsExcept(string excludeColor, string[] allColors)

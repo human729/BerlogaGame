@@ -11,6 +11,7 @@ public class PlayerTrigger : MonoBehaviour
     private bool isOnTriggerWorkplace;
     private MinigameSQL minigame;
     public GameObject spawnZone;
+    [SerializeField] private SceneLoader loader;
     [SerializeField] private GameObject computerCanvas;
     [SerializeField] private CharacterController characterController;
     [SerializeField] private string NextScene;
@@ -61,8 +62,7 @@ public class PlayerTrigger : MonoBehaviour
         }
         if (collision.CompareTag("EndTriggerZone") && !isOpeningScene)
         {
-            isOpeningScene = true;
-            StartCoroutine(OpenScene());
+            loader.LoadNextScene();
         }
     }
 
@@ -84,12 +84,5 @@ public class PlayerTrigger : MonoBehaviour
         yield return new WaitForSeconds(.3f);
         transform.position = spawnZone.transform.position;
         gameObject.GetComponent<CharacterController>().enabled = true;
-    }
-
-    IEnumerator OpenScene()
-    {
-        yield return new WaitForSeconds(.3f);
-        TransitionLvl.Instance.LoadSceneWith(NextScene);
-        SceneManager.LoadScene(NextScene);
     }
 }

@@ -47,8 +47,8 @@ public class Lvl1Manager : MonoBehaviour
         if (DoorOpenInfo != null)
         {
             DoorOpenInfo.text =
-                $"<color=#1164B4>Главная:</color> T = {mainTargetTemp}°C, цвет = {mainTargetColor}\n" +
-                $"<color=#1164B4>Лифт:</color> цвет = {elevatorTargetColor}";
+                $"<color=#93AF48>Главная:</color> T = {mainTargetTemp}°C, цвет = {mainTargetColor}\n" +
+                $"<color=#93AF48>Лифт:</color> цвет = {elevatorTargetColor}";
         }
     }
 

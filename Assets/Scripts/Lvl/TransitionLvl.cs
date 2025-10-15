@@ -33,12 +33,32 @@ public class TransitionLvl : MonoBehaviour
         }
     }
 
+    public void LoadSceneWith(int sceneNumber)
+    {
+        if (!isTransitioning)
+        {
+            StartCoroutine(TransitionToLvl(sceneNumber));
+        }
+    }
+
     private IEnumerator TransitionToLvl(string sceneName)
     {
         isTransitioning = true;
 
         yield return StartCoroutine(Fade(0f, 1f));
         SceneManager.LoadScene(sceneName);
+        yield return new WaitForEndOfFrame();
+        yield return StartCoroutine(Fade(1f, 0f));
+
+        isTransitioning = false;
+    }
+
+    private IEnumerator TransitionToLvl(int sceneNumber)
+    {
+        isTransitioning = true;
+
+        yield return StartCoroutine(Fade(0f, 1f));
+        SceneManager.LoadScene(sceneNumber);
         yield return new WaitForEndOfFrame();
         yield return StartCoroutine(Fade(1f, 0f));
 

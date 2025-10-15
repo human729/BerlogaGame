@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class NextLevell : MonoBehaviour
 {
-    [SerializeField] string sceneName;
     [SerializeField] List<Animator> animator;
+    [SerializeField] SceneLoader sceneLoader;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -14,7 +14,7 @@ public class NextLevell : MonoBehaviour
                 animtor.SetBool("DronInTrigger", false);
             }
 
-            TransitionLvl.Instance.LoadSceneWith(sceneName);
+            sceneLoader.LoadNextScene();
             CanvasManager.IsStoryEnd = false;
         }
     }

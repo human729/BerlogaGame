@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ChooseTradition.unity
     guid: 1e8496d3c2366394c9b08c5c462a06df
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: 066d77068ca74e4479aa57e9d736ce26
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
