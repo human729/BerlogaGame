@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTrigger
   spawnZone: {fileID: 0}
+  loader: {fileID: 0}
   computerCanvas: {fileID: 0}
   characterController: {fileID: 1362766609754728398}
   NextScene: ResearchLaboratory3
@@ -214,11 +215,11 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 6112637531183808456, guid: 9018f09ccbe216742a01f96b931d0be1, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 1697e6ef97919b24c827c3d51b870b57, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

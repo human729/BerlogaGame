@@ -37,8 +37,16 @@ public class CharacterController : MonoBehaviour
             scale.x = Mathf.Abs(scale.x) * (inputX < 0 ? -1 : 1);
             transform.localScale = scale;
         }
+        if (animator.GetBool("MovingRight") && animator.GetBool("IsGrounded"))
+        {
+            source.mute = false;
+        }
+        else
+        {
+            source.mute = true;
+        }
 
-        transform.position += new Vector3(inputX * Speed * Time.deltaTime, 0f);
+            transform.position += new Vector3(inputX * Speed * Time.deltaTime, 0f);
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(0, rayCastOffset), Vector2.down, 0.1f);
         Debug.DrawRay(transform.position - new Vector3(0, rayCastOffset), Vector2.down * 0.1f, Color.red);
