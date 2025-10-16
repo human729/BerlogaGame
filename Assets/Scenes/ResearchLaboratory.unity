@@ -2461,10 +2461,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 67078495}
-    - target: {fileID: 3478735515728213445, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
-      propertyPath: startRoomId
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3815867513871903866, guid: d826338d3954e9246b9da4681dd9e348, type: 3}
       propertyPath: m_Name
       value: ComputerUI

@@ -814,9 +814,9 @@ RectTransform:
   - {fileID: 1143773801}
   - {fileID: 1676209366}
   - {fileID: 1511996729}
+  - {fileID: 604048398}
   - {fileID: 855725615}
   - {fileID: 1515950856}
-  - {fileID: 604048398}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2346,7 +2346,7 @@ Transform:
   m_GameObject: {fileID: 705533476}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6555, y: 3.43, z: 0.038738854}
+  m_LocalPosition: {x: -1.67, y: 3.48, z: 0.038738854}
   m_LocalScale: {x: 0.21362081, y: 0.17523111, z: 0.055057395}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3484,7 +3484,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1163488068, guid: 22e9e2f8d519baa48ba654f547f174af, type: 3}
+  m_Sprite: {fileID: -1163488068, guid: 0da2fe20ed32a7041820abda3e8177b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3848,7 +3848,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1798105254, guid: 22e9e2f8d519baa48ba654f547f174af, type: 3}
+  m_Sprite: {fileID: -1798105254, guid: 0da2fe20ed32a7041820abda3e8177b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4329,7 +4329,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1674968208, guid: 22e9e2f8d519baa48ba654f547f174af, type: 3}
+  m_Sprite: {fileID: -1674968208, guid: 0da2fe20ed32a7041820abda3e8177b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4783,7 +4783,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -969174855, guid: 22e9e2f8d519baa48ba654f547f174af, type: 3}
+  m_Sprite: {fileID: -969174855, guid: 0da2fe20ed32a7041820abda3e8177b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5983,7 +5983,7 @@ Transform:
   m_GameObject: {fileID: 1601299840}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.99, y: -0.62, z: 0.016746534}
+  m_LocalPosition: {x: 2.99, y: -0.575, z: 0.016746534}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

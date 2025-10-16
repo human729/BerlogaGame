@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
 
 public class RoomPanelUI : MonoBehaviour

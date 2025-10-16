@@ -23,5 +23,6 @@ public class InGameSettings : MonoBehaviour
     public void ExitGame()
     {
         SceneManager.LoadScene("MainMenu");
+        SceneLoader.Scenes.Clear();
     }
 }

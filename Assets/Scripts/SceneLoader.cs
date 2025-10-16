@@ -8,9 +8,9 @@ public class SceneLoader : MonoBehaviour
 {
     private List<int[]> SceneNumbers = new List<int[]>();
     public static Queue<int[]> Scenes = new Queue<int[]>();
-    private int[] ResearcherScenes = { 1, 2, 3 };
-    private int[] ConstructorScenes = { 4, 5, 6 };
-    private int[] ProgrammerScenes = { 7, 8, 9 };
+    private int[] ResearcherScenes = { 2, 3, 4 };
+    private int[] ConstructorScenes = { 5, 6, 7 };
+    private int[] ProgrammerScenes = { 8, 9, 10 };
 
     public void AddScenesToList()
     {
@@ -47,7 +47,7 @@ public class SceneLoader : MonoBehaviour
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         int[] LevelScenes = Scenes.Peek();
-        if (currentScene == 10)
+        if (currentScene == 11)
         {
             int firstScene = LevelScenes[0];
             TransitionLvl.Instance.LoadSceneWith(firstScene);
