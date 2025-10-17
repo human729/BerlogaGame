@@ -19,6 +19,7 @@ public class CheckAllButtonsPosition : MonoBehaviour
         foreach (var button in allTriiger)
         {
             if (!button.isPositionRight) {
+                allButtonsOnTheirPosition = false;
                 return;
             }
         }
