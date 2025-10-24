@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 public class CheckAllButtonsPosition : MonoBehaviour
 {
-    [SerializeField] List<CheckUIPosition> allTriiger;
+    [SerializeField] List<DragSprite> allTriiger;
     private bool allButtonsOnTheirPosition = false;
     void Update()
     {
@@ -18,7 +18,7 @@ public class CheckAllButtonsPosition : MonoBehaviour
     {
         foreach (var button in allTriiger)
         {
-            if (!button.isPositionRight) {
+            if (!button.isRightPosition) {
                 allButtonsOnTheirPosition = false;
                 return;
             }

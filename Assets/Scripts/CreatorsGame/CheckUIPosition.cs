@@ -3,12 +3,12 @@ using UnityEngine;
 public class CheckUIPosition : MonoBehaviour
 {
     [SerializeField] string tag;
-    public bool isPositionRight = false;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.tag == tag)
         {
-            isPositionRight = true;
+           collision.gameObject.GetComponent<DragSprite>().isRightPosition = true;
         }
     }
 
@@ -16,7 +16,7 @@ public class CheckUIPosition : MonoBehaviour
     {
         if (collision.tag == tag)
         {
-            isPositionRight = false;
+            collision.gameObject.GetComponent<DragSprite>().isRightPosition = true;
         }
     }
 }

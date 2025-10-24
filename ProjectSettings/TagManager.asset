@@ -16,6 +16,8 @@ TagManager:
   - Platform
   - EndTriggerZone
   - BioEngineerTable
+  - FirstTrigger
+  - SecondTrigger
   layers:
   - Default
   - TransparentFX
