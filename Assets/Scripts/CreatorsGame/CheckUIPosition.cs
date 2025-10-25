@@ -16,7 +16,7 @@ public class CheckUIPosition : MonoBehaviour
     {
         if (collision.tag == tag)
         {
-            collision.gameObject.GetComponent<DragSprite>().isRightPosition = true;
+            collision.gameObject.GetComponent<DragSprite>().isRightPosition = false;
         }
     }
 }
