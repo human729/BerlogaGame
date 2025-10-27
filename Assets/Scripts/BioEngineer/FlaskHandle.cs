@@ -10,6 +10,11 @@ public class FlaskHandle : MonoBehaviour
 
     public void ClearLayers()
     {
+        foreach (Image flask in FlaskScript.FlaskLayers)
+        {
+            flask.color = Color.white;
+        }
+
         FlaskScript.LayerColors.Clear();
     }
 
