@@ -30,14 +30,12 @@ public class GridManager : MonoBehaviour
     void GenerateLevel()
     {
         grid = new Pipe[width, height];
-
-        // Генерируем сложный путь
         int maxAttempts = 20;
         int attempts = 0;
 
         do
         {
-            path = GenerateComplexPath();
+            path = GeneratePath();
             attempts++;
         } while ((path == null || path.Count < minPathLength || !IsPathValid()) && attempts < maxAttempts);
 
@@ -48,21 +46,17 @@ public class GridManager : MonoBehaviour
         }
 
         Debug.Log($"Generated path with {path.Count} segments and {CountTurns(path)} turns");
-
-        // Сначала заполняем путь
         FillPathPipes();
 
-        // Затем заполняем остальные клетки с обманными путями
         FillNonPathCellsWithDistractions();
 
         SetupFlowManager();
     }
 
-    List<Vector2Int> GenerateComplexPath()
+    List<Vector2Int> GeneratePath()
     {
         List<Vector2Int> path = new List<Vector2Int>();
 
-        // Старт всегда слева, но не обязательно в центре
         Vector2Int start = new Vector2Int(0, Random.Range(1, height - 1));
         path.Add(start);
 
@@ -80,7 +74,6 @@ public class GridManager : MonoBehaviour
 
             if (possibleMoves.Count == 0)
             {
-                // Если зашли в тупик, пробуем откатиться на несколько шагов
                 if (path.Count > 3)
                 {
                     int backSteps = Random.Range(1, Mathf.Min(4, path.Count - 1));
@@ -98,10 +91,8 @@ public class GridManager : MonoBehaviour
                 }
             }
 
-            // Выбираем следующий ход со стратегией
-            Vector2Int nextMove = ChooseStrategicMove(current, possibleMoves, path, turnsMade, maxTurns);
+            Vector2Int nextMove = ChooseMove(current, possibleMoves, path, turnsMade, maxTurns);
 
-            // Считаем повороты
             if (path.Count >= 2)
             {
                 Vector2Int prevDir = current - path[^2];
@@ -115,7 +106,6 @@ public class GridManager : MonoBehaviour
             current = nextMove;
             path.Add(current);
 
-            // Иногда добавляем небольшие петли
             if (allowBacktracking && path.Count > 5 && Random.value < 0.15f)
             {
                 if (TryAddSmallLoop(path, ref current))
@@ -125,10 +115,8 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        // Убедимся, что финиш справа
         if (path[^1].x != width - 1)
         {
-            // Прокладываем прямой путь к правому краю
             while (current.x < width - 1 && totalAttempts < maxTotalAttempts * 2)
             {
                 totalAttempts++;
@@ -140,7 +128,6 @@ public class GridManager : MonoBehaviour
                 }
                 else
                 {
-                    // Ищем обходной путь
                     break;
                 }
             }
@@ -161,7 +148,6 @@ public class GridManager : MonoBehaviour
             Vector2Int next = current + dir;
             if (IsPositionValid(next, path))
             {
-                // Проверяем, не ведет ли этот ход к немедленному тупику
                 if (!WouldCreateDeadEnd(next, path))
                 {
                     moves.Add(next);
@@ -174,10 +160,7 @@ public class GridManager : MonoBehaviour
 
     bool WouldCreateDeadEnd(Vector2Int pos, List<Vector2Int> path)
     {
-        // Создаем временный путь для проверки
         List<Vector2Int> tempPath = new List<Vector2Int>(path) { pos };
-
-        // Проверяем количество возможных ходов из этой позиции
         int possibleExits = 0;
         Vector2Int[] directions = { Vector2Int.right, Vector2Int.up, Vector2Int.down, Vector2Int.left };
 
@@ -193,9 +176,8 @@ public class GridManager : MonoBehaviour
         return possibleExits == 0;
     }
 
-    Vector2Int ChooseStrategicMove(Vector2Int current, List<Vector2Int> possibleMoves, List<Vector2Int> path, int turnsMade, int maxTurns)
+    Vector2Int ChooseMove(Vector2Int current, List<Vector2Int> possibleMoves, List<Vector2Int> path, int turnsMade, int maxTurns)
     {
-        // Приоритеты в зависимости от ситуации
         float progress = (float)current.x / (width - 1);
         bool needMoreTurns = turnsMade < maxTurns * 0.7f;
         bool nearEnd = progress > 0.7f;
@@ -211,27 +193,26 @@ public class GridManager : MonoBehaviour
 
             if (nearEnd && direction == Vector2Int.right)
             {
-                preferredMoves.Add(move); // Двигаемся к финишу
+                preferredMoves.Add(move); 
             }
             else if (needMoreTurns && isTurn)
             {
-                preferredMoves.Add(move); // Добавляем повороты
+                preferredMoves.Add(move); 
             }
             else if (direction == Vector2Int.right)
             {
-                goodMoves.Add(move); // Прогресс вправо
+                goodMoves.Add(move);
             }
             else if (Mathf.Abs(direction.y) == 1)
             {
-                acceptableMoves.Add(move); // Вертикальное движение
+                acceptableMoves.Add(move);
             }
             else
             {
-                acceptableMoves.Add(move); // Движение влево (для петель)
+                acceptableMoves.Add(move);
             }
         }
 
-        // Выбираем из приоритетных списков
         if (preferredMoves.Count > 0) return preferredMoves[Random.Range(0, preferredMoves.Count)];
         if (goodMoves.Count > 0) return goodMoves[Random.Range(0, goodMoves.Count)];
         return acceptableMoves[Random.Range(0, acceptableMoves.Count)];
@@ -240,8 +221,6 @@ public class GridManager : MonoBehaviour
     bool TryAddSmallLoop(List<Vector2Int> path, ref Vector2Int current)
     {
         if (path.Count < 3) return false;
-
-        // Пробуем сделать небольшую петлю: вниз-вправо-вверх или вверх-вправо-вниз
         Vector2Int[] loopPatterns = {
             Vector2Int.down, Vector2Int.right, Vector2Int.up,
             Vector2Int.up, Vector2Int.right, Vector2Int.down
@@ -291,10 +270,8 @@ public class GridManager : MonoBehaviour
     {
         if (path[0].x != 0 || path[^1].x != width - 1)
             return false;
-
-        // Проверяем, что путь достаточно сложный
         int turns = CountTurns(path);
-        if (turns < 3) return false; // Минимум 3 поворота
+        if (turns < 3) return false;
 
         return true;
     }
@@ -306,13 +283,12 @@ public class GridManager : MonoBehaviour
             Vector2Int current = path[i];
             Vector3 pos = new Vector3(current.x, current.y, 0);
 
-            if (i == 0) // Start
+            if (i == 0) 
             {
                 GameObject start = Instantiate(startPrefab, pos, Quaternion.identity);
                 Pipe startPipe = start.GetComponent<Pipe>();
                 startPipe.type = Pipe.PipeType.Start;
 
-                // Определяем направление выхода из старта
                 Vector2Int firstStep = path[1] - path[0];
                 bool right = firstStep == Vector2Int.right;
                 bool up = firstStep == Vector2Int.up;
@@ -322,15 +298,14 @@ public class GridManager : MonoBehaviour
                 startPipe.InitializeDirections(up, down, left, right);
                 grid[current.x, current.y] = startPipe;
             }
-            else if (i == path.Count - 1) // Finish
+            else if (i == path.Count - 1) 
             {
                 GameObject finish = Instantiate(finishPrefab, pos, Quaternion.identity);
                 Pipe finishPipe = finish.GetComponent<Pipe>();
                 finishPipe.type = Pipe.PipeType.Finish;
 
-                // Определяем направление входа в финиш
                 Vector2Int lastStep = path[^1] - path[^2];
-                bool right = lastStep == Vector2Int.left; // Приход слева = вход справа
+                bool right = lastStep == Vector2Int.left;
                 bool up = lastStep == Vector2Int.down;
                 bool down = lastStep == Vector2Int.up;
                 bool left = lastStep == Vector2Int.right;
@@ -338,7 +313,7 @@ public class GridManager : MonoBehaviour
                 finishPipe.InitializeDirections(up, down, left, right);
                 grid[current.x, current.y] = finishPipe;
             }
-            else // Path pipes
+            else 
             {
                 GameObject prefab = GetPathPipePrefab(current, out float rotation);
                 GameObject obj = Instantiate(prefab, pos, Quaternion.Euler(0, 0, rotation));
@@ -361,7 +336,6 @@ public class GridManager : MonoBehaviour
                 {
                     if (Random.value > obstacleChance)
                     {
-                        // Создаем обманные пути и сложные комбинации
                         GameObject prefab = GetStrategicPipePrefab(x, y, out float rotation);
                         GameObject obj = Instantiate(prefab, pos, Quaternion.Euler(0, 0, rotation));
                         Pipe pipe = obj.GetComponent<Pipe>();
@@ -379,7 +353,6 @@ public class GridManager : MonoBehaviour
 
     GameObject GetStrategicPipePrefab(int x, int y, out float rotation)
     {
-        // Анализируем окружение для создания хитрых комбинаций
         bool nearPath = IsNearPath(x, y);
         bool nearStartOrEnd = IsNearStartOrEnd(x, y);
 
@@ -388,19 +361,16 @@ public class GridManager : MonoBehaviour
 
         if (nearStartOrEnd)
         {
-            // Рядом со стартом/финишем - простые трубы чтобы не блокировать
             return straightPrefab;
         }
         else if (nearPath)
         {
-            // Рядом с путем - создаем отвлекающие соединения
             if (rand < 0.3f) return tShapePrefab;
             else if (rand < 0.6f) return cornerPrefab;
             else return straightPrefab;
         }
         else
         {
-            // Вдали от пути - сложные комбинации
             if (rand < 0.4f) return tShapePrefab;
             else if (rand < 0.6f) return crossPrefab;
             else if (rand < 0.8f) return cornerPrefab;
@@ -434,14 +404,11 @@ public class GridManager : MonoBehaviour
         Vector2Int outDir = next - current;
 
         rotation = 0f;
-
-        // Прямая труба
         if (inDir == outDir || inDir == -outDir)
         {
             rotation = (inDir.x != 0) ? 90f : 0f;
             return straightPrefab;
         }
-        // Угловая труба
         else
         {
             if ((inDir == Vector2Int.up && outDir == Vector2Int.right) || (inDir == Vector2Int.right && outDir == Vector2Int.up))
