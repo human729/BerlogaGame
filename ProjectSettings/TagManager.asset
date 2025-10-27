@@ -16,6 +16,7 @@ TagManager:
   - Platform
   - EndTriggerZone
   - BioEngineerTable
+  - PipeZone
   layers:
   - Default
   - TransparentFX

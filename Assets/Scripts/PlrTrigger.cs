@@ -3,17 +3,20 @@ using UnityEngine;
 
 public class PlrTrigger : MonoBehaviour
 {
-    private bool inDeadZone = false;
-    private bool isOnTriggerLampZone = false;
-    private bool isOnTriggerTempControl = false;
-    private bool isOnTriggerWorkplace = false;
-    public GameObject StoryObject;
+    [System.Serializable]
+    public class MiniGame
+    {
+        public string tag;
+        public GameObject gameObject;
+        public bool isActive = false;
+    }
+
+    [SerializeField] private MiniGame[] miniGames;
     [SerializeField] private GameObject spawnZone;
-    [SerializeField] private GameObject TempControlGameObject;
-    [SerializeField] private GameObject ColorControlGameObject;
-    [SerializeField] private GameObject computerCanvas;
 
     private CharacterController characterController;
+    private string currentTriggerTag = "";
+    private bool inDeadZone = false;
 
     private void Start()
     {
@@ -25,80 +28,82 @@ public class PlrTrigger : MonoBehaviour
         if (inDeadZone)
         {
             StartCoroutine(Spawn());
-        }
-        if (StoryObject.activeInHierarchy)
-        {
-            characterController.canMove = false;
-        }
-        else if (!TempControlGameObject.activeInHierarchy && !ColorControlGameObject.activeInHierarchy)
-        {
-            characterController.canMove = true;
-        }
-        else if (TempControlGameObject.activeInHierarchy || ColorControlGameObject.activeInHierarchy)
-        {
-            characterController.canMove = false;
+            return;
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        bool anyGameActive = false;
+        foreach (var game in miniGames)
         {
-            if (isOnTriggerWorkplace)
+            if (game.gameObject != null && game.gameObject.activeInHierarchy)
             {
-                TurnOffMovement();
+                anyGameActive = true;
+                break;
             }
-            else if (isOnTriggerLampZone)
-            {
-                ColorControlGameObject.SetActive(true);
-                TurnOffMovement();
-            }
-            else if (isOnTriggerTempControl)
-            {
-                TempControlGameObject.SetActive(true);
-                TurnOffMovement();
-            }
+        }
+
+        characterController.canMove = !anyGameActive;
+        if (Input.GetKeyDown(KeyCode.E) && !string.IsNullOrEmpty(currentTriggerTag))
+        {
+            TryActivateMiniGame(currentTriggerTag);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Workplace"))
-            isOnTriggerWorkplace = true;
-
-        if (collision.CompareTag("LampZone"))
-            isOnTriggerLampZone = true;
-
-        if (collision.CompareTag("TempControl"))
-            isOnTriggerTempControl = true;
+        foreach (var game in miniGames)
+        {
+            if (collision.CompareTag(game.tag))
+            {
+                currentTriggerTag = game.tag;
+                return;
+            }
+        }
 
         if (collision.CompareTag("DeadZone"))
+        {
             inDeadZone = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Workplace"))
-            isOnTriggerWorkplace = false;
-
-        if (collision.CompareTag("LampZone"))
-            isOnTriggerLampZone = false;
-
-        if (collision.CompareTag("TempControl"))
-            isOnTriggerTempControl = false;
+        foreach (var game in miniGames)
+        {
+            if (collision.CompareTag(game.tag))
+            {
+                currentTriggerTag = "";
+                return;
+            }
+        }
 
         if (collision.CompareTag("DeadZone"))
+        {
             inDeadZone = false;
+        }
     }
 
-    private void TurnOffMovement()
+    private void TryActivateMiniGame(string tag)
     {
-        characterController.canMove = false;
+        foreach (var game in miniGames)
+        {
+            if (game.tag == tag && game.gameObject != null)
+            {
+                game.gameObject.SetActive(true);
+                characterController.canMove = false;
+                return;
+            }
+        }
     }
 
     IEnumerator Spawn()
     {
-        gameObject.GetComponent<CharacterController>().enabled = false;
+        characterController.enabled = false;
         yield return new WaitForSeconds(.3f);
-        transform.position = spawnZone.transform.position;
-        gameObject.GetComponent<CharacterController>().enabled = true;
+
+        if (spawnZone != null)
+            transform.position = spawnZone.transform.position;
+
+        characterController.enabled = true;
         inDeadZone = false;
     }
 }
