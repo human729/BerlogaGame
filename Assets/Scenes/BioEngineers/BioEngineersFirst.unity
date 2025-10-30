@@ -3061,10 +3061,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flaskLayers:
-  - {fileID: 1658005541}
-  - {fileID: 253014467}
-  - {fileID: 1910183172}
   - {fileID: 505097822}
+  - {fileID: 1910183172}
+  - {fileID: 253014467}
+  - {fileID: 1658005541}
   mixtureRules:
   - element1: Cu
     element2: Fe
