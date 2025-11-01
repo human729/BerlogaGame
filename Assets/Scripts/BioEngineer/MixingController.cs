@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class MixingController : MonoBehaviour
 {
     public static MixingController Instance;
+    public GameObject Door;
 
     [Header("References")]
     public MainFlask mainFlask;
@@ -19,6 +20,17 @@ public class MixingController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             mainFlask.TryMixAllElements();
+            for (int i = 0; i < mainFlask.currentElements.Count; i++)
+            {
+                for (int j = 0; j < mainFlask.TargetReaction.products.Count; j++) {
+                    if (mainFlask.TargetReaction.products[j].elementName == mainFlask.currentElements[i].name)
+                    {
+                        Door.GetComponent<BoxCollider2D>().enabled = false;
+                        Door.GetComponent<SpriteRenderer>().color = Color.white;
+                        break;
+                    }
+                }
+            }
         }
     }
 

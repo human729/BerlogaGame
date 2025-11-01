@@ -11,12 +11,18 @@ public class SceneLoader : MonoBehaviour
     private int[] ResearcherScenes = { 2, 3, 4 };
     private int[] ConstructorScenes = { 5, 6, 7 };
     private int[] ProgrammerScenes = { 8, 9, 10 };
+    private int[] BioengineerScenes = { 14 };
+    private int[] BeekeeperScenes = { 13 };
+    private int[] CreatorScenes = { 15 };
 
     public void AddScenesToList()
     {
         SceneNumbers.Add(ResearcherScenes);
         SceneNumbers.Add(ConstructorScenes);
         SceneNumbers.Add(ProgrammerScenes);
+        SceneNumbers.Add(BioengineerScenes);
+        SceneNumbers.Add(BeekeeperScenes);
+        SceneNumbers.Add(CreatorScenes);
         string SceneName = gameObject.GetComponentInChildren<Text>().text;
 
         switch (SceneName)
@@ -27,6 +33,18 @@ public class SceneLoader : MonoBehaviour
 
             case "Программисты":
                 (SceneNumbers[0], SceneNumbers[2]) = (SceneNumbers[2], SceneNumbers[0]);
+                break;
+
+            case "Биоинженеры":
+                (SceneNumbers[0], SceneNumbers[3]) = (SceneNumbers[3], SceneNumbers[0]);
+                break;
+
+            case "Пчеловоды":
+                (SceneNumbers[0], SceneNumbers[4]) = (SceneNumbers[4], SceneNumbers[0]);
+                break;
+
+            case "Творцы":
+                (SceneNumbers[0], SceneNumbers[5]) = (SceneNumbers[5], SceneNumbers[0]);
                 break;
 
             case "Первопроходцы":
