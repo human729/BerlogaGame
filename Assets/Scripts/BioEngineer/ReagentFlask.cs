@@ -17,7 +17,6 @@ public class ReagentFlask : MonoBehaviour
         button = GetComponent<Button>();
         button.onClick.AddListener(OnFlaskClick);
 
-        // Устанавливаем текст элемента
         if (elementText != null)
         {
             elementText.text = elementName;

@@ -8,18 +8,33 @@ public class MainFlask : MonoBehaviour
     [Header("Flask Layers")]
     public List<Image> flaskLayers;
 
-    [Header("Mixture Rules")]
-    public List<MixtureRule> mixtureRules;
+    [Header("Chemical Reactions")]
+    public List<ChemicalReaction> chemicalReactions;
 
-    private Stack<FlaskElement> currentElements = new Stack<FlaskElement>();
+    private List<FlaskElement> currentElements = new List<FlaskElement>();
 
     [System.Serializable]
-    public class MixtureRule
+    public class ChemicalReaction
     {
-        public string element1;
-        public string element2;
-        public string resultElement;
-        public Color resultColor;
+        public string reactionName;
+        public List<Reactant> reactants;
+        public List<Product> products;
+        public Color reactionColor;
+    }
+
+    [System.Serializable]
+    public class Reactant
+    {
+        public string elementName;
+        public int count = 1;
+    }
+
+    [System.Serializable]
+    public class Product
+    {
+        public string elementName;
+        public Color elementColor;
+        public int count = 1;
     }
 
     [System.Serializable]
@@ -39,57 +54,111 @@ public class MainFlask : MonoBehaviour
     {
         if (currentElements.Count >= flaskLayers.Count)
         {
-            Debug.Log("Flask is full!");
+            print("Flask is full!");
             return;
         }
 
-        currentElements.Push(new FlaskElement(elementName, elementColor));
+        currentElements.Add(new FlaskElement(elementName, elementColor));
         UpdateFlaskDisplay();
     }
 
-    public void MixElements()
+    public void TryMixAllElements()
     {
         if (currentElements.Count < 2)
         {
-            Debug.Log("Need at least 2 elements to mix!");
+            print("Need at least 2 elements to mix!");
             return;
         }
 
-        // Берем два верхних элемента
-        var element1 = currentElements.Pop();
-        var element2 = currentElements.Pop();
+        var possibleReactions = FindPossibleReactions();
 
-        // Ищем правило смешивания
-        var mixture = FindMixture(element1.name, element2.name);
-
-        if (mixture != null)
+        if (possibleReactions.Count > 0)
         {
-            // Создаем новую смесь
-            currentElements.Push(new FlaskElement(mixture.resultElement, mixture.resultColor));
-            Debug.Log($"Created mixture: {mixture.resultElement}");
+            ExecuteReaction(possibleReactions[0]);
         }
         else
         {
-            // Если смешивание невозможно, возвращаем элементы обратно
-            currentElements.Push(element2);
-            currentElements.Push(element1);
-            Debug.Log("No mixture possible with these elements");
+            print("No chemical reactions possible");
         }
-
-        UpdateFlaskDisplay();
     }
 
-    private MixtureRule FindMixture(string elem1, string elem2)
+    private List<ChemicalReaction> FindPossibleReactions()
     {
-        foreach (var rule in mixtureRules)
+        List<ChemicalReaction> possibleReactions = new List<ChemicalReaction>();
+
+        foreach (var reaction in chemicalReactions)
         {
-            if ((rule.element1 == elem1 && rule.element2 == elem2) ||
-                (rule.element1 == elem2 && rule.element2 == elem1))
+            if (CanExecuteReaction(reaction))
             {
-                return rule;
+                possibleReactions.Add(reaction);
             }
         }
-        return null;
+
+        return possibleReactions;
+    }
+
+    private bool CanExecuteReaction(ChemicalReaction reaction)
+    {
+        Dictionary<string, int> availableElements = new Dictionary<string, int>();
+
+        foreach (var element in currentElements)
+        {
+            if (availableElements.ContainsKey(element.name))
+                availableElements[element.name]++;
+            else
+                availableElements[element.name] = 1;
+        }
+
+        foreach (var reactant in reaction.reactants)
+        {
+            if (!availableElements.ContainsKey(reactant.elementName))
+                return false;
+
+            if (availableElements[reactant.elementName] < reactant.count)
+                return false;
+        }
+
+        return true;
+    }
+
+    private void ExecuteReaction(ChemicalReaction reaction)
+    {
+        print($"Executing reaction: {reaction.reactionName}");
+
+        List<FlaskElement> newElements = new List<FlaskElement>();
+        List<string> elementsToRemove = new List<string>();
+
+        foreach (var reactant in reaction.reactants)
+        {
+            for (int i = 0; i < reactant.count; i++)
+            {
+                elementsToRemove.Add(reactant.elementName);
+            }
+        }
+
+        foreach (var element in currentElements)
+        {
+            if (elementsToRemove.Contains(element.name))
+            {
+                elementsToRemove.Remove(element.name);
+                continue;
+            }
+            newElements.Add(element);
+        }
+
+        foreach (var product in reaction.products)
+        {
+            for (int i = 0; i < product.count; i++)
+            {
+                newElements.Add(new FlaskElement(product.elementName, product.elementColor));
+            }
+        }
+
+        currentElements = newElements;
+        UpdateFlaskDisplay();
+
+        print($"Reaction completed: {reaction.reactionName}");
+        PrintCurrentElements();
     }
 
     public void ClearFlask()
@@ -100,20 +169,24 @@ public class MainFlask : MonoBehaviour
 
     private void UpdateFlaskDisplay()
     {
-        // Очищаем все слои
         foreach (var layer in flaskLayers)
         {
             layer.color = Color.white;
         }
 
-        // Заполняем слои текущими элементами (снизу вверх)
-        var elementsArray = currentElements.ToArray();
-
-        for (int i = 0; i < elementsArray.Length && i < flaskLayers.Count; i++)
+        for (int i = 0; i < currentElements.Count && i < flaskLayers.Count; i++)
         {
-            // elementsArray идет сверху вниз, нам нужно снизу вверх
-            int layerIndex = flaskLayers.Count - 1 - i;
-            flaskLayers[layerIndex].color = elementsArray[i].color;
+            flaskLayers[i].color = currentElements[i].color;
         }
+    }
+
+    public void PrintCurrentElements()
+    {
+        string elements = "Current elements: ";
+        foreach (var element in currentElements)
+        {
+            elements += $"{element.name}, ";
+        }
+        print(elements);
     }
 }

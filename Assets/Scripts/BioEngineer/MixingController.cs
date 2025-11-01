@@ -16,10 +16,9 @@ public class MixingController : MonoBehaviour
 
     private void Update()
     {
-        // Обработка нажатия E для смешивания
         if (Input.GetKeyDown(KeyCode.E))
         {
-            mainFlask.MixElements();
+            mainFlask.TryMixAllElements();
         }
     }
 
