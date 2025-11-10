@@ -9,68 +9,50 @@ public class FlowManager : MonoBehaviour
 
     private HashSet<Pipe> visited = new HashSet<Pipe>();
 
-    public event System.Action OnFlowSuccess;
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            CheckFlow();
+            bool success = CheckFlow();
+            Debug.Log(success ? "<color=green Поток дошёл до цели!</color>" : "<color=red> Поток не завершён!</color>");
         }
     }
 
-    public void CheckFlow()
+    public bool CheckFlow()
     {
-        if (grid == null)
-        {
-            Debug.LogWarning("Grid not assigned!");
-            return;
-        }
-
         visited.Clear();
-        bool success = FlowFrom(startPos.x, startPos.y, null);
-
-        if (success)
-        {
-            Debug.Log("Flow reached finish!");
-            OnFlowSuccess?.Invoke();
-        }
-        else
-        {
-            Debug.Log("Connection broken.");
-        }
+        return Flow(startPos.x, startPos.y, Vector2Int.zero);
     }
 
-    bool FlowFrom(int x, int y, Pipe fromPipe)
+    public bool CheckFlowSimulate()
     {
-        Pipe current = grid.GetPipe(x, y);
-        if (current == null || visited.Contains(current))
-            return false;
+        visited.Clear();
+        return Flow(startPos.x, startPos.y, Vector2Int.zero);
+    }
 
-        visited.Add(current);
+    bool Flow(int x, int y, Vector2Int fromDir)
+    {
+        Pipe p = grid.GetPipe(x, y);
+        if (p == null || visited.Contains(p)) return false;
 
-        if (x == endPos.x && y == endPos.y)
-            return true;
-        if (current.up && CanFlowTo(x, y + 1, "down")) return true;
-        if (current.down && CanFlowTo(x, y - 1, "up")) return true;
-        if (current.left && CanFlowTo(x - 1, y, "right")) return true;
-        if (current.right && CanFlowTo(x + 1, y, "left")) return true;
+        visited.Add(p);
+
+        if (x == endPos.x && y == endPos.y) return true;
+
+        Vector2Int[] dirs = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
+        foreach (var d in dirs)
+        {
+            if (d == -fromDir) continue;
+
+            Pipe next = grid.GetPipe(x + d.x, y + d.y);
+            if (next == null) continue;
+
+            if (p.Has(d) && next.Has(-d))
+            {
+                if (Flow(x + d.x, y + d.y, d)) return true;
+            }
+        }
 
         return false;
-    }
-
-    bool CanFlowTo(int x, int y, string requiredDirection)
-    {
-        Pipe neighbor = grid.GetPipe(x, y);
-        if (neighbor == null) return false;
-
-        return requiredDirection switch
-        {
-            "up" => neighbor.up,
-            "down" => neighbor.down,
-            "left" => neighbor.left,
-            "right" => neighbor.right,
-            _ => false
-        };
     }
 }
