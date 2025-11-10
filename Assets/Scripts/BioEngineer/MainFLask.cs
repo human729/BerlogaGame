@@ -5,13 +5,17 @@ using System.Linq;
 
 public class MainFlask : MonoBehaviour
 {
+    public ChemicalReaction TargetReaction;
+    [Header("UI")]
+    public Text taskText;
+
     [Header("Flask Layers")]
     public List<Image> flaskLayers;
 
     [Header("Chemical Reactions")]
     public List<ChemicalReaction> chemicalReactions;
 
-    private List<FlaskElement> currentElements = new List<FlaskElement>();
+    public List<FlaskElement> currentElements = new List<FlaskElement>();
 
     [System.Serializable]
     public class ChemicalReaction
@@ -48,6 +52,12 @@ public class MainFlask : MonoBehaviour
             name = elementName;
             color = elementColor;
         }
+    }
+
+    private void Start()
+    {
+        TargetReaction = chemicalReactions[Random.Range(0, chemicalReactions.Count - 1)];
+        taskText.text = $"Создайте соединение \"{TargetReaction.reactionName}\"";
     }
 
     public void AddElement(string elementName, Color elementColor)

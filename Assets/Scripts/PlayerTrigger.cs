@@ -6,9 +6,8 @@ public class PlayerTrigger : MonoBehaviour
 {
     private bool inDeadZone;
     private bool isOpeningScene = false;
-    private bool isOnTriggerLeverZone;
-    private bool isOnTriggerLampZone;
     private bool isOnTriggerWorkplace;
+    private bool isOnTriggerTableZone;
     private MinigameSQL minigame;
     public GameObject spawnZone;
     [SerializeField] private SceneLoader loader;
@@ -33,6 +32,10 @@ public class PlayerTrigger : MonoBehaviour
                 computerCanvas.SetActive(true);
                 minigame.CreateTask();
             }
+            if (isOnTriggerTableZone && !computerCanvas.activeInHierarchy)
+            {
+                computerCanvas.SetActive(true);
+            }
         }
 
         if (inDeadZone)
@@ -48,13 +51,9 @@ public class PlayerTrigger : MonoBehaviour
             isOnTriggerWorkplace = true;
             minigame = collision.GetComponent<MinigameSQL>();
         }
-        if (collision.CompareTag("LampZone"))
+        if (collision.CompareTag("BioEngineerTable"))
         {
-            isOnTriggerLampZone = true;
-        }
-        if (collision.CompareTag("LeverZone"))
-        {
-            isOnTriggerLeverZone= true;
+            isOnTriggerTableZone = true;
         }
         if (collision.CompareTag("DeadZone"))
         {
@@ -68,9 +67,8 @@ public class PlayerTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isOnTriggerLampZone = false;
         isOnTriggerWorkplace = false;
-        isOnTriggerLeverZone = false;
+        isOnTriggerTableZone = false;
         if (inDeadZone)
         {
             StartCoroutine(Spawn());
